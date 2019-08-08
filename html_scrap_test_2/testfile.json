@@ -1,0 +1,187 @@
+{
+  "questions": [
+    {
+      "question": "qMostImportant",
+      "answers": {
+        "safe_with_breastfeeding-yes": 1,
+        "pregnant_after_stopping-yes": 2,
+        "few_side_effects-yes": 3,
+        "no_hormones-no": 4,
+        "effective_long_term-no": 5,
+        "not_interrupt_sex-no": 6,
+        "continue_periods-no": 7,
+        "fewer_periods-no": 8,
+        "decreases_symptoms_from_periods-no": 9
+      }
+    },
+    {
+      "question": "qRiskFactors",
+      "answers": {
+        "smoke-no": 1,
+        "bloodpressure-no": 2,
+        "over35-no": 3,
+        "other-risk-factors-no": 4
+      }
+    },
+    {
+      "question": "qPeriodProblems",
+      "answers": {
+        "period_bother-no": 1
+      }
+    },
+    {
+      "question": "qWhichHaveYouUsed",
+      "answers": {
+        "ocp-no": 1,
+        "ccap-no": 2,
+        "diaph-no": 3,
+        "sperm-no": 4,
+        "pop-no": 5,
+        "nuvaring-no": 6,
+        "depo-no": 7,
+        "nori-no": 8,
+        "cyclomess-no": 9,
+        "mcondom-no": 10,
+        "fcondom-no": 11,
+        "sponge-no": 12,
+        "paragard-no": 13,
+        "implanon-no": 14,
+        "withd-no": 15
+      }
+    },
+    {
+      "question": "qOtherMedications",
+      "answers": {
+        "stjohnswort-no": 1,
+        "antifungal-no": 2
+      }
+    },
+    {
+      "question": "qOtherHealthIssues",
+      "answers": {
+        "acne-no": 1,
+        "hair-no": 2,
+        "endometriosis-no": 3,
+        "tss-no": 4
+      }
+    },
+    {
+      "question": "qWhenHaveChildren",
+      "answers": {
+        "have-children-year": 1
+      }
+    },
+    {
+      "question": "qOtherQuestions",
+      "answers": {
+        "i-put-no": 1,
+        "healthworker-put-no": 2,
+        "partner-willing-no": 3,
+        "keep-secret-no": 4,
+        "breastfeeding-no": 5,
+        "sti-protect-no": 6
+      }
+    },
+    {
+      "question": "qMethodSpecific",
+      "answers": {
+        "birth_control_pills-no": 1,
+        "birth_control_injections-no": 2,
+        "contraceptive_ring-no": 3,
+        "iud-no": 4,
+        "contraceptive_implant-no": 5
+      }
+    },
+    {
+      "question": "results"
+    }
+  ],
+  "results": {
+    "green": [
+      {
+        "id": "mcondom",
+        "score": 0.5666666666666667
+      },
+      {
+        "id": "fam",
+        "score": 0.5499999999999999
+      }
+    ],
+    "yellow": [
+      {
+        "id": "withd",
+        "score": 0.48666666666666664
+      },
+      {
+        "id": "fcondom",
+        "score": 0.4514285714285714
+      },
+      {
+        "id": "diaph",
+        "score": 0.36
+      },
+      {
+        "id": "sperm",
+        "score": 0.355
+      },
+      {
+        "id": "sponge",
+        "score": 0.2914285714285714
+      },
+      {
+        "id": "ccap",
+        "score": 0.2914285714285714
+      },
+      {
+        "id": "ortho_evra",
+        "score": 0.049538461538461545
+      },
+      {
+        "id": "ocp",
+        "score": -0.08846153846153845
+      }
+    ],
+    "red": [
+      {
+        "id": "vas",
+        "score": 0.2852857142857143
+      },
+      {
+        "id": "btl",
+        "score": 0.28428571428571425
+      },
+      {
+        "id": "pop",
+        "score": 0.21230769230769234
+      },
+      {
+        "id": "mirena",
+        "score": 0.13528125
+      },
+      {
+        "id": "paragard",
+        "score": 0.13527272727272727
+      },
+      {
+        "id": "implanon",
+        "score": 0.10576719576719577
+      },
+      {
+        "id": "nuvaring",
+        "score": 0.06133333333333332
+      },
+      {
+        "id": "cyclomess",
+        "score": 0.05196428571428572
+      },
+      {
+        "id": "nori",
+        "score": -0.008660714285714282
+      },
+      {
+        "id": "depo",
+        "score": -0.07794642857142856
+      }
+    ]
+  }
+}
