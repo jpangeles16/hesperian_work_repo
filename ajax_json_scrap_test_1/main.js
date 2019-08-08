@@ -1,5 +1,5 @@
 console.log("Hello, world!");
-
+debugger;
 // Fetches the button from the document
 var btn = document.getElementById("demo");
 
