@@ -79,16 +79,22 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 	}
 }
 
-/* Mini helper function that, when given an answer, returns either "YES" or "NO"
-depending on what the user has answered.
+/* Mini helper function that, when given an answer property,
+returns an array with the question, and an answer 
+that is either yes or no.
 */
-function getAnswer(answer) {
-	var lastChar = answer[answer.length - 1]
+function getUserResponse(answer) {
+	var lastChar = answer[answer.length - 1];
+	var question;
+	var response;
 	if (answer[answer.length - 1] == "o") {
-		return "NO";
+		question = answer.substring(0, answer.length - 3);
+		response = "NO";
 	} else {
-		return "YES";
+		question = answer.substring(0, answer.length - 4);
+		response = "YES";
 	}
+	return [question, response];
 }
 
 
@@ -96,10 +102,44 @@ function getAnswer(answer) {
 */
 function processQMostImportant(questionObject) {
 	var answers = questionObject.answers;
+
+	// Variables to store the question and answer pair.
+		var q;
+
 	for (var prop in answers) {
-		var answer = getUserResponse(answers[prop]);
-		// userAnswer is the user's answer
-		console.log(answer);
+		var questionAnswerPair = getUserResponse(prop);
+
+		switch(questionAnswerPair[0]) {
+			case "safe_with_breastfeeding":
+				q = "Safe with breastfeeding";
+				break;
+			case "pregnant_after_stopping":
+				q = "Able to get pregnant quickly after stopping the method";
+				break;
+			case "few_side_effects":
+				q = "Few or no side-effects";
+				break;
+			case "no_hormones":
+				q = "No hormones";
+				break;
+			case "effective_long_term":
+				q = "Effective long term (3 months or longer)";
+				break;
+			case "not_interrupt_sex":
+				q = "Don't need to interrupt sex to use it";
+				break;
+			case "continue_periods":
+				q = "Continue to have my monthly periods";
+				break;
+			case "fewer_periods":
+				q = "Have fewer or no periods";
+				break;
+			case "decreases_symptoms_from_periods":
+				q = "Decrease symptoms from period";
+				break;
+		}
+		console.log("Question: " + q);
+		console.log("You answered: " + questionAnswerPair[1]);
 	}
 }
 
