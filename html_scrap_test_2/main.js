@@ -76,11 +76,11 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			return;
 		case "qOtherQuestions":
 			console.log("EIGHTH PAGE");
-			console.log("qOtherQuestions");
+			processQOtherQuestions(questionAndAnswerObject);
 			return;
 		case "qMethodSpecific":
 			console.log("NINTH PAGE");
-			console.log("Last question I think");
+			processQMethodSpecific(questionAndAnswerObject);
 			return;
 		default:
 			console.log("Nothing happened!");
@@ -295,14 +295,66 @@ function processQWhenHaveChildren(questionObject) {
 	console.log("STILL NEED TO IMPLEMENT");
 }
 
-function processQOtherQuestions(questionObkect) {
+function processQOtherQuestions(questionObject) {
 	var answers = questionObject.answers;
 	var q;
 
 	for (var prop in answers) {
 		var questionAnswerPair = getUserResponse(prop);
+		switch(questionAnswerPair[0]) {
+			case"i-put":
+				q = "I can't use methods where I have to put things into my vagina";
+				break;
+			case"healthworker-put":
+				q = "I can't use a method where a health worker puts something into my vagina or womb";
+				break;
+			case"partner-willing":
+				q = "My partner is not willing to use birth control"
+				break;
+			case"keep-secret":
+				q = "I want to keep my method secret from others (my parents or partner)";
+				break;
+			case"breastfeeding":
+				q = "I am breastfeeding";
+				break;
+			case"sti-protect":
+				q = "I need something that protects against STIs";
+				break;
+		}
+		console.log("Prompt: " + q);
+		console.log("You answered: " + questionAnswerPair[1]);
 	}
 }
+
+function processQMethodSpecific(questionObject) {
+	var answers = questionObject.answers;
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+		switch(questionAnswerPair[0]) {
+			case"birth_control_pills":
+				q = "Birth control pills only work when you take a pill every single day, more or less at the same time. Could you do this?";
+				break;
+			case"birth_control_injections":
+				q = "Birth control injections require that you go to the clinic every 1-3 months to get an injection. Could you do this?";
+				break;
+			case"contraceptive_ring":
+				q = "The contraceptive ring requires you to place a small bendable ring in your vagina every month. Could you do this?";
+				break;
+			case"iud":
+				q = "The IUD is a small T-shaped object placed inside your uterus by a health worker. It provides contraception for 3-12 years, depending on the type. Would you feel comfortable having this done?";
+				break;
+			case"contraceptive_implant":
+				q = "The contraceptive implant is 1-2 small tubes placed under the skin on your upper arm by a health worker. It provides contraception for up to 3 years. Would you feel comfortable having this done?";
+				break;
+		}
+		console.log("Question: " + q);
+		console.log("You answered: " + questionAnswerPair[1]);
+	}
+}
+
+
 
 
 
