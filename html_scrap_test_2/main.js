@@ -47,30 +47,39 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 	var question = questionAndAnswerObject.question;
 	switch (question) {
 		case "qMostImportant":
+			console.log("FIRST PAGE");
 			processQMostImportant(questionAndAnswerObject);
 			return;
 		case "qRiskFactors":
-			console.log("Risk factors");
+			console.log("SECOND PAGE");
+			processQRiskFactors(questionAndAnswerObject);
 			return;
 		case "qPeriodProblems":
-			console.log("Period problems question");
+			console.log("THIRD PAGE");
+			processQPeriodProblems(questionAndAnswerObject);
 			return;
 		case "qWhichHaveYouUsed":
-			console.log("Which have I used question");
+			console.log("FOURTH PAGE");
+			processQWhichHaveYouUsed(questionAndAnswerObject);
 			return;
 		case "qOtherMedications":
-			console.log("Other medications question");
+			console.log("FIFTH PAGE");
+			processQOtherMedications(questionAndAnswerObject);
 			return;
 		case "qOtherHealthIssues":
-			console.log("qOtherHealthIssues");
+			console.log("SIXTH PAGE");
+			processQOtherHealthIssues(questionAndAnswerObject);
 			return;
 		case "qWhenHaveChildren":
-			console.log("qWhenHaveChildren");
+			console.log("SEVENTH PAGE");
+			processQWhenHaveChildren(questionAndAnswerObject);
 			return;
 		case "qOtherQuestions":
+			console.log("EIGHTH PAGE");
 			console.log("qOtherQuestions");
 			return;
 		case "qMethodSpecific":
+			console.log("NINTH PAGE");
 			console.log("Last question I think");
 			return;
 		default:
@@ -104,7 +113,7 @@ function processQMostImportant(questionObject) {
 	var answers = questionObject.answers;
 
 	// Variables to store the question and answer pair.
-		var q;
+	var q;
 
 	for (var prop in answers) {
 		var questionAnswerPair = getUserResponse(prop);
@@ -143,6 +152,157 @@ function processQMostImportant(questionObject) {
 	}
 }
 
+/* Remember that questionObject contains an answers list. */
+function processQRiskFactors(questionObject) {
+	var answers = questionObject.answers;
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+		
+		switch(questionAnswerPair[0]) {
+			case "smoke":
+				q = "Do you smoke tobacco?";
+				break;
+			case "bloodpressure":
+				q = "Do you have high blood pressure?";
+				break;
+			case "over35":
+				q = "Are you over 35-years old?";
+				break;
+			case "other-risk-factors":
+				q = "Have you ever had a serious, long-term health problem such as cancer, anemia, seizures, migraines, TB, stroke, heart attack or others?";
+				break;
+		}
+
+		console.log("Question: " + q);
+		console.log("You answered: " + questionAnswerPair[1]);
+	}
+}
+
+/* Handles the third page of questions. */
+function processQPeriodProblems(questionObject) {
+	var answers = questionObject.answers;
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+		console.log("Question: When you are NOT using birth control, does your period bother you?");
+		console.log("You answered: " + questionAnswerPair[1]);
+	}
+}
+
+function processQWhichHaveYouUsed(questionObject) {
+	var answers = questionObject.answers;
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+		switch(questionAnswerPair[0]) {
+			case "ocp":
+				q = "The pill or birth control pills (containing both an estrogen and progestin)";
+				break;
+			case "ccap":
+				q = "Cervical cap";
+				break;
+			case "diaph":
+				q = "Diaphragm";
+				break;
+			case "sperm":
+				q = "Vaginal spermicides (foam, film, gel, or suppositories)";
+				break;
+			case "pop":
+				q = "'Mini-pills' or progestin-only pills";
+				break;
+			case "nuvaring":
+				q = "NuvaRing, the vaginal contraceptive ring";
+				break;
+			case "depo":
+				q = "Depo-Provera, birth control injection";
+				break;
+			case"nori":
+				q = "Noristerat, birth control injection";
+				break;
+			case "cyclomess":
+				q = "Cyclofem or Mesigyna, birth control injection";
+				break;
+			case"mcondom":
+				q = "Male condom";
+				break;
+			case"fcondom":
+				q = "Female condom";
+				break;
+			case"sponge":
+				q = "Contraceptive sponge";
+				break;
+			case"paragard":
+				q = "Intrauterine Device or IUD (ParaGard, Mirena, or others)";
+				break;
+			case"implanon":
+				q = "Contraceptive implant (Norplant, Implanon, or others)";
+				break;
+			case"withd":
+				q = "Pulling out or withdrawal";
+				break;
+		}
+		console.log("Method: " + q);
+		console.log("You answered: " + questionAnswerPair[1]);		
+	}
+}
+
+function processQOtherMedications(questionObject) {
+	var answers = questionObject.answers;
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+
+		switch(questionAnswerPair[0]) {
+			case "stjohnswort":
+				q = "Do you take St. John's wort?";
+				break;
+			case "antifungal":
+				q = "Do you use antifungal medications such as Griseofulvin, Fulvicin or Grisactin?";
+				break;
+		}
+		console.log("Question: " + q);
+		console.log("You answered: " + questionAnswerPair[1]);
+	}
+}
+
+function processQOtherHealthIssues(questionObject) {
+	var answers = questionObject.answers;
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+
+		switch(questionAnswerPair[0]) {
+			case"acne":
+				q = "Do you have severe acne?";
+				break;
+			case"hair":
+				q = "Do you have thick, dark facial hair?";
+				break;
+			case"endometriosis":
+				q = "Do you have endometriosis?"
+				break;
+		}
+		console.log("Question: " + q);
+		console.log("You answered: " + questionAnswerPair[1]);
+	}
+}
+
+function processQWhenHaveChildren(questionObject) {
+	console.log("STILL NEED TO IMPLEMENT");
+}
+
+function processQOtherQuestions(questionObkect) {
+	var answers = questionObject.answers;
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+	}
+}
 
 
 
