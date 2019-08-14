@@ -1,13 +1,39 @@
 /* JavaScript file to print results in a
 readable format given a JSON file
 from the family planning app.
+
+Kind of like a conveyor belt, this script takes input
+from input.addEventListener and displays the results 
+through (in this order) displayQuestionsAndAnswers, to processX functions,
+to finally the renderHTML function.
 @author John Angeles
 */
+
+//Get the container from our HTML file that will display the results.
+var displayContainer = document.getElementById("displayContentsContainer");
+
+/* Fourth step. A function that works in conjunction with displayContainer.
+Basically, it displays our results to our HTML file. */
+function renderHTML(question, answer) {
+	var answerClass;
+
+	if (answer == "NO") {
+		answerClass = "no";
+	} else {
+		answerClass = "yes";
+	}
+
+	var qDisplay = "<p class='" + answerClass + "'>Question: " + question + "</p>";
+	var answer = "<p class='" + answerClass + "'>You answered: " + answer + "</p>";
+	displayContainer.insertAdjacentHTML('beforeend', qDisplay);
+	displayContainer.insertAdjacentHTML('beforeend', answer);
+}
 
 // Input is the input element from our HTML script.
 var input = document.getElementById("fileInput");
 
-// When the input changes, we will end up calling this function that will ultimately call the onload function
+/* First step. When the input changes, we will end up calling this
+ function that will ultimately call the onload function. */
 input.addEventListener('change', function (e) {
 	const reader = new FileReader(); 
 
@@ -20,15 +46,20 @@ input.addEventListener('change', function (e) {
 		// Fetch the questions.
 		var questionsList = parsedFile.questions;
 
+		// Fetch the results.
+		var results = parsedFile.results;
+
+		// Display the user's results.
 		displayQuestionsAndAnswers(questionsList);
 
+		// (Leads to fifth step) display the recommendations
+		displayRecommendations(results);
 	}
-
 	// Reads the input.
 	reader.readAsText(input.files[0]);
 })
 
-/* Main function that, given a questionsList recently gotten
+/* Second step. Main function that, given a questionsList recently gotten
 from a parsed file, displays the results in a human-readable fashion.
 */
 function displayQuestionsAndAnswers(questionsList) {
@@ -40,50 +71,40 @@ function displayQuestionsAndAnswers(questionsList) {
 	}
 }
 
-/* To be called from displayQuestionsAndAnswers. It takes in an object
+/*Third step. These upcoming functions that this function uses
+are in the third step in our process.
+To be called from displayQuestionsAndAnswers. It takes in an object
 that has a question and a set of answers.
 */
 function processQuestionAndAnswerObject(questionAndAnswerObject) {
 	var question = questionAndAnswerObject.question;
 	switch (question) {
 		case "qMostImportant":
-			console.log("FIRST PAGE");
 			processQMostImportant(questionAndAnswerObject);
 			return;
 		case "qRiskFactors":
-			console.log("SECOND PAGE");
 			processQRiskFactors(questionAndAnswerObject);
 			return;
 		case "qPeriodProblems":
-			console.log("THIRD PAGE");
 			processQPeriodProblems(questionAndAnswerObject);
 			return;
 		case "qWhichHaveYouUsed":
-			console.log("FOURTH PAGE");
 			processQWhichHaveYouUsed(questionAndAnswerObject);
 			return;
 		case "qOtherMedications":
-			console.log("FIFTH PAGE");
 			processQOtherMedications(questionAndAnswerObject);
 			return;
 		case "qOtherHealthIssues":
-			console.log("SIXTH PAGE");
 			processQOtherHealthIssues(questionAndAnswerObject);
 			return;
 		case "qWhenHaveChildren":
-			console.log("SEVENTH PAGE");
 			processQWhenHaveChildren(questionAndAnswerObject);
 			return;
 		case "qOtherQuestions":
-			console.log("EIGHTH PAGE");
 			processQOtherQuestions(questionAndAnswerObject);
 			return;
 		case "qMethodSpecific":
-			console.log("NINTH PAGE");
 			processQMethodSpecific(questionAndAnswerObject);
-			return;
-		default:
-			console.log("Nothing happened!");
 			return;
 	}
 }
@@ -147,8 +168,7 @@ function processQMostImportant(questionObject) {
 				q = "Decrease symptoms from period";
 				break;
 		}
-		console.log("Question: " + q);
-		console.log("You answered: " + questionAnswerPair[1]);
+		renderHTML(q, questionAnswerPair[1]);
 	}
 }
 
@@ -175,8 +195,7 @@ function processQRiskFactors(questionObject) {
 				break;
 		}
 
-		console.log("Question: " + q);
-		console.log("You answered: " + questionAnswerPair[1]);
+		renderHTML(q, questionAnswerPair[1]);
 	}
 }
 
@@ -185,8 +204,7 @@ function processQPeriodProblems(questionObject) {
 	var answers = questionObject.answers;
 	for (var prop in answers) {
 		var questionAnswerPair = getUserResponse(prop);
-		console.log("Question: When you are NOT using birth control, does your period bother you?");
-		console.log("You answered: " + questionAnswerPair[1]);
+		renderHTML("Question: When you are NOT using birth control, does your period bother you?", questionAnswerPair[1]);
 	}
 }
 
@@ -243,8 +261,8 @@ function processQWhichHaveYouUsed(questionObject) {
 				q = "Pulling out or withdrawal";
 				break;
 		}
-		console.log("Method: " + q);
-		console.log("You answered: " + questionAnswerPair[1]);		
+		renderHTML(q, questionAnswerPair[1]);
+	
 	}
 }
 
@@ -263,8 +281,8 @@ function processQOtherMedications(questionObject) {
 				q = "Do you use antifungal medications such as Griseofulvin, Fulvicin or Grisactin?";
 				break;
 		}
-		console.log("Question: " + q);
-		console.log("You answered: " + questionAnswerPair[1]);
+		renderHTML(q, questionAnswerPair[1]);
+
 	}
 }
 
@@ -286,8 +304,8 @@ function processQOtherHealthIssues(questionObject) {
 				q = "Do you have endometriosis?"
 				break;
 		}
-		console.log("Question: " + q);
-		console.log("You answered: " + questionAnswerPair[1]);
+		renderHTML(q, questionAnswerPair[1]);
+
 	}
 }
 
@@ -321,8 +339,8 @@ function processQOtherQuestions(questionObject) {
 				q = "I need something that protects against STIs";
 				break;
 		}
-		console.log("Prompt: " + q);
-		console.log("You answered: " + questionAnswerPair[1]);
+		renderHTML(q, questionAnswerPair[1]);
+
 	}
 }
 
@@ -349,11 +367,85 @@ function processQMethodSpecific(questionObject) {
 				q = "The contraceptive implant is 1-2 small tubes placed under the skin on your upper arm by a health worker. It provides contraception for up to 3 years. Would you feel comfortable having this done?";
 				break;
 		}
-		console.log("Question: " + q);
-		console.log("You answered: " + questionAnswerPair[1]);
+		renderHTML(q, questionAnswerPair[1]);
+
 	}
 }
 
+// =================================================================
+
+// THIS HALF DISPLAYS THE SURVEY'S RECOMMENDATIONS
+
+// =================================================================
+
+/* Given the results from the JSON file, display the recommendations the survey gives the user.
+Results is an object with three properties: green, yellow, or red. Each color property contains a list
+of objects that each contain an id and a score.
+ */
+function displayRecommendations(results) {
+	var green = results.green;
+	var yellow = results.yellow;
+	var red = results.red;
+
+	for (var i = 0; i < green.length; i ++) {
+		console.log(returnMethod(green[i].id));
+	}
+
+	for (i = 0; i < yellow.length; i ++) {
+		console.log(returnMethod(yellow[i].id));
+	}
+
+	for (i = 0; i < red.length; i ++) {
+		console.log(returnMethod(red[i].id));
+	}
+}
+
+/* Called from displayRecommendations. Given an id, this function displays the proper name
+of the method. */
+function returnMethod(id) {
+	switch(id) {
+		case"btl":
+			return "BTL/Tubes Tied";
+		case"ccap":
+			return "CCAP";
+		case"depo":
+			return "Depo";
+		case"nori":
+			return "Noristerat";
+		case"cyclomess":
+			return "Cyclofem and Messygna";
+		case"diaph":
+			return "Diaphram";
+		case"fam":
+			return "Fam";
+		case"fcondom":
+			return "Female Condom";
+		case"implanon":
+			return "Implant";
+		case"mcondom":
+			return "Male Condom";
+		case"mirena":
+			return "Mirena";
+		case"nuvaring":
+			return "Nuva Ring";
+		case"ocp":
+			return "Birth Control Pills";
+		case"ortho_evra":
+			return "Patch";
+		case"paragard":
+			return "Paragard";
+		case"pop":
+			return "Mini Pills";
+		case"sperm":
+			return "Spermicide";
+		case"sponge":
+			return "Sponge";
+		case"vas":
+			return "Vasectomy";
+		case"withd":
+			return "Withdrawal";
+	}
+}
 
 
 

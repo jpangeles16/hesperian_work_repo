@@ -1,0 +1,23 @@
+/*Styles to make the displays look nice and user
+readable.
+@author John Angeles*/
+
+#displayContentsContainer {
+	width: 100%;
+	border: 4px solid green;
+	border-radius: 5px;
+	padding: 3px;
+}
+
+p {
+	margin: 0px;
+	font-size:200%;
+}
+
+.yes {
+	background-color: lightgreen;
+}
+
+.no {
+	background-color: #ffd1b3;
+}
