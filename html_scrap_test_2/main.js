@@ -378,6 +378,8 @@ function processQMethodSpecific(questionObject) {
 
 // =================================================================
 
+var recommendationsContainer = document.getElementById("displayRecommendations");
+
 /* Given the results from the JSON file, display the recommendations the survey gives the user.
 Results is an object with three properties: green, yellow, or red. Each color property contains a list
 of objects that each contain an id and a score.
@@ -387,16 +389,22 @@ function displayRecommendations(results) {
 	var yellow = results.yellow;
 	var red = results.red;
 
+	var result;
+
 	for (var i = 0; i < green.length; i ++) {
-		console.log(returnMethod(green[i].id));
+		result = returnMethod(green[i].id);
+		recommendationsContainer.insertAdjacentHTML('beforeend', "<p>" + result + "</p>");
 	}
 
 	for (i = 0; i < yellow.length; i ++) {
-		console.log(returnMethod(yellow[i].id));
+		result = returnMethod(yellow[i].id);
+		recommendationsContainer.insertAdjacentHTML('beforeend', "<p>" + result + "</p>");
 	}
 
 	for (i = 0; i < red.length; i ++) {
-		console.log(returnMethod(red[i].id));
+		result = returnMethod(red[i].id);
+		recommendationsContainer.insertAdjacentHTML('beforeend', "<p>" + result + "</p>");
+
 	}
 }
 

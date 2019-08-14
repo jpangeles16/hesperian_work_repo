@@ -9,6 +9,10 @@ readable.
 	padding: 3px;
 }
 
+#displayRecommendations {
+	border: 4px solid gray;
+}
+
 p {
 	margin: 0px;
 	font-size:200%;
