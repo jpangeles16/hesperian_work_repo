@@ -15,6 +15,7 @@ var displayContainer = document.getElementById("displayContentsContainer");
 /* Fourth step. A function that works in conjunction with displayContainer.
 Basically, it displays our results to our HTML file. */
 function renderHTML(question, answer) {
+
 	var answerClass;
 
 	if (answer == "NO") {
@@ -63,6 +64,9 @@ input.addEventListener('change', function (e) {
 from a parsed file, displays the results in a human-readable fashion.
 */
 function displayQuestionsAndAnswers(questionsList) {
+
+	displayContainer.insertAdjacentHTML('beforeend', "<h1> Your Input </h1>");
+
 	var i;
 	// For loop that basically iterates through the list and prints out what the user responded.
 	for (i = 0; i < questionsList.length; i ++) {
@@ -385,6 +389,8 @@ Results is an object with three properties: green, yellow, or red. Each color pr
 of objects that each contain an id and a score.
  */
 function displayRecommendations(results) {
+	recommendationsContainer.insertAdjacentHTML('beforeend', "<h1> Recommendations </h1>");
+
 	var green = results.green;
 	var yellow = results.yellow;
 	var red = results.red;
