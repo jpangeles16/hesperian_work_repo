@@ -84,30 +84,39 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 	var question = questionAndAnswerObject.question;
 	switch (question) {
 		case "qMostImportant":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>FIRST PAGE</p>");
 			processQMostImportant(questionAndAnswerObject);
 			return;
 		case "qRiskFactors":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>SECOND PAGE</p>");
 			processQRiskFactors(questionAndAnswerObject);
 			return;
 		case "qPeriodProblems":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>THIRD PAGE</p>");
 			processQPeriodProblems(questionAndAnswerObject);
 			return;
 		case "qWhichHaveYouUsed":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>FOURT PAGE</p>");
 			processQWhichHaveYouUsed(questionAndAnswerObject);
 			return;
 		case "qOtherMedications":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>FIFTH PAGE</p>");
 			processQOtherMedications(questionAndAnswerObject);
 			return;
 		case "qOtherHealthIssues":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>SIXTH PAGE</p>");
 			processQOtherHealthIssues(questionAndAnswerObject);
 			return;
 		case "qWhenHaveChildren":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>SEVENTH PAGE</p>");
 			processQWhenHaveChildren(questionAndAnswerObject);
 			return;
 		case "qOtherQuestions":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>EIGHTH PAGE</p>");
 			processQOtherQuestions(questionAndAnswerObject);
 			return;
 		case "qMethodSpecific":
+			displayContainer.insertAdjacentHTML('beforeend', "<p>NINTH PAGE</p>");
 			processQMethodSpecific(questionAndAnswerObject);
 			return;
 	}
@@ -397,20 +406,26 @@ function displayRecommendations(results) {
 
 	var result;
 
+	recommendationsContainer.insertAdjacentHTML('beforeend', "<p> RECOMMENDED: </p>")
+
 	for (var i = 0; i < green.length; i ++) {
 		result = returnMethod(green[i].id);
-		recommendationsContainer.insertAdjacentHTML('beforeend', "<p>" + result + "</p>");
+		displayGreenResult(result);
 	}
+
+	recommendationsContainer.insertAdjacentHTML('beforeend', "<p> OTHER POSSIBLE: </p>")
+
 
 	for (i = 0; i < yellow.length; i ++) {
 		result = returnMethod(yellow[i].id);
-		recommendationsContainer.insertAdjacentHTML('beforeend', "<p>" + result + "</p>");
+		displayYellowResult(result);
 	}
+
+	recommendationsContainer.insertAdjacentHTML('beforeend', "<p> NOT RECOMMENDED: </p>")
 
 	for (i = 0; i < red.length; i ++) {
 		result = returnMethod(red[i].id);
-		recommendationsContainer.insertAdjacentHTML('beforeend', "<p>" + result + "</p>");
-
+		displayRedResult(result);
 	}
 }
 
@@ -461,6 +476,19 @@ function returnMethod(id) {
 	}
 }
 
+/* Assumes we are calling from displayRecommendations. We display results 
+with a green finish.*/
+function displayGreenResult(result) {
+	recommendationsContainer.insertAdjacentHTML('beforeend', "<p class='greenresult'>" + result + "</p>");
+
+}
+function displayYellowResult(result) {
+	recommendationsContainer.insertAdjacentHTML('beforeend', "<p class='yellowresult'>" + result + "</p>");
+}
+
+function displayRedResult(result) {
+	recommendationsContainer.insertAdjacentHTML('beforeend', "<p class='redresult'>" + result + "</p>");
+}
 
 
 
