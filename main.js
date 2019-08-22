@@ -69,31 +69,24 @@ function renderHTML(question, answer) {
 /* First step. When the input changes, we will end up calling this
  function that will ultimately call the onload function. */
 function startGenerating() {
-	const reader = new FileReader(); 
 
-	// As soon as we read the text, we will call the following function.
-	reader.onload = function() {
+	//First, ensure that the url is properly decoded
+	url = decodeURL(url);
 
-		//First, ensure that the url is properly decoded
-		url = decodeURL(url);
+	// Parse the url from the reader
+	var parsedFile = JSON.parse(url);
 
-		// Parse the url from the reader
-		var parsedFile = JSON.parse(url);
+	// Fetch the questions.
+	var questionsList = parsedFile.questions;
 
-		// Fetch the questions.
-		var questionsList = parsedFile.questions;
+	// Fetch the results.
+	var results = parsedFile.results;
 
-		// Fetch the results.
-		var results = parsedFile.results;
+	// Display the user's results.
+	displayQuestionsAndAnswers(questionsList);
 
-		// Display the user's results.
-		displayQuestionsAndAnswers(questionsList);
-
-		// (Leads to fifth step) display the recommendations
-		displayRecommendations(results);
-	}
-	// Reads the input.
-	reader.readAsText(input.files[0]);
+	// (Leads to fifth step) display the recommendations
+	displayRecommendations(results);
 }
 
 /* Assumes that our URL input is encoded. Not only does this function
