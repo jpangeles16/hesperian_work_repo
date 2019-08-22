@@ -49,3 +49,7 @@ h1 {
 .redresult {
 	background-color: #ffd1b3;
 }
+
+div.displayHTTPS {
+	width: 100%;
+}
