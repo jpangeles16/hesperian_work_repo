@@ -33,61 +33,62 @@ function renderHTML(question, answer) {
 	displayContainer.insertAdjacentHTML('beforeend', answer);
 }
 
-// // Input is the input element from our HTML script.
-// var input = document.getElementById("fileInput");
+// Input is the input element from our HTML script.
+var input = document.getElementById("fileInput");
 
-// /* First step. When the input changes, we will end up calling this
-//  function that will ultimately call the onload function. */
-// input.addEventListener('change', function (e) {
-// 	const reader = new FileReader(); 
-
-// 	// As soon as we read the text, we will call the following function.
-// 	reader.onload = function() {
-
-// 		//First, ensure that the url is properly decoded
-// 		url = decodeURL(url);
-
-// 		// Parse the url from the reader
-// 		var parsedFile = JSON.parse(url);
-
-// 		// Fetch the questions.
-// 		var questionsList = parsedFile.questions;
-
-// 		// Fetch the results.
-// 		var results = parsedFile.results;
-
-// 		// Display the user's results.
-// 		displayQuestionsAndAnswers(questionsList);
-
-// 		// (Leads to fifth step) display the recommendations
-// 		displayRecommendations(results);
-// 	}
-// 	// Reads the input.
-// 	reader.readAsText(input.files[0]);
-// })
+const reader = new FileReader(); 
 
 /* First step. When the input changes, we will end up calling this
  function that will ultimately call the onload function. */
-function startGenerating() {
+input.addEventListener('change', function (e) {
 
-	//First, ensure that the url is properly decoded
-	url = decodeURL(url);
+	// As soon as we read the text, we will call the following function.
+	reader.onload = function() {
 
-	// Parse the url from the reader
-	var parsedFile = JSON.parse(url);
+		//First, ensure that the url is properly decoded
+		url = decodeURL(url);
 
-	// Fetch the questions.
-	var questionsList = parsedFile.questions;
+		// Parse the url from the reader
+		var parsedFile = JSON.parse(reader.result);
 
-	// Fetch the results.
-	var results = parsedFile.results;
+		// Fetch the questions.
+		var questionsList = parsedFile.questions;
 
-	// Display the user's results.
-	displayQuestionsAndAnswers(questionsList);
+		// Fetch the results.
+		var results = parsedFile.results;
 
-	// (Leads to fifth step) display the recommendations
-	displayRecommendations(results);
-}
+		// Display the user's results.
+		displayQuestionsAndAnswers(questionsList);
+
+		// (Leads to fifth step) display the recommendations
+		displayRecommendations(results);
+	}
+	// Reads the input.
+	reader.readAsText(input.files[0]);
+})
+
+// /* First step. When the input changes, we will end up calling this
+//  function that will ultimately call the onload function. */
+// function startGenerating() {
+
+// 	//First, ensure that the url is properly decoded
+// 	url = decodeURL(url);
+
+// 	// Parse the url from the reader
+// 	var parsedFile = JSON.parse(url);
+
+// 	// Fetch the questions.
+// 	var questionsList = parsedFile.questions;
+
+// 	// Fetch the results.
+// 	var results = parsedFile.results;
+
+// 	// Display the user's results.
+// 	displayQuestionsAndAnswers(questionsList);
+
+// 	// (Leads to fifth step) display the recommendations
+// 	displayRecommendations(results);
+// }
 
 /* Assumes that our URL input is encoded. Not only does this function
 decode it, but it returns the JSON text that we can parse to get the answers from 
@@ -535,8 +536,7 @@ function displayRedResult(result) {
 	recommendationsContainer.insertAdjacentHTML('beforeend', "<p class='redresult'>" + result + "</p>");
 }
 
-/* The function that calls everything! */
-window.onload = startGenerating;
+
 
 
 
