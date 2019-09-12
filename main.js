@@ -41,6 +41,22 @@ function renderHTML(question, answer) {
 	displayContainer.insertAdjacentHTML('beforeend', answer);
 }
 
+/* Fourth step. A function that works in conjunction with the issues container. */
+function renderHTMLForContraceptiveProblems(question, answer) {
+	var answerClass;
+
+	if (answer == "NO") {
+		answerClass = "no";
+	} else {
+		answerClass = "yes";
+	}
+
+	var qDisplay = "<p class='" + answerClass + "'>Question: " + question + "</p>";
+	var answer = "<p class='" + answerClass + "'>You answered: " + answer + "</p>";
+	contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', qDisplay);
+	contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', answer);
+}
+
 // Input is the input element from our HTML script.
 var input = document.getElementById("fileInput");
 const reader = new FileReader(); 
@@ -149,35 +165,51 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			displayContainer.insertAdjacentHTML('beforeend', "<p>FOURTH PAGE</p>");
 			processQWhichHaveYouUsed(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/ocp":
+		case "qMethodProblems/ocp": //OCP means birth control pills
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>BIRTH CONTROL PILLS ISSUES</p>");
+			processQMethodProblemsOCP(questionAndAnswerObject);
 			return;
 		case "qMethodProblems/ccap":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/diaph":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/sperm":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/pop":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/nuvaring":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/depo":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/nori":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/cyclomess":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/mcondom":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/fcondom":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/sponge":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/paragard":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/implanon":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qMethodProblems/withd":
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
 			return;
 		case "qOtherMedications":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>FIFTH PAGE</p>");
@@ -201,6 +233,73 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			return;
 	}
 }
+
+//===== Set of functions that display user response when user inputs issues with contraceptives =====//
+/* OCP means birth controll pills */
+function processQMethodProblemsOCP(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+	// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);
+		switch(questionAnswerPair[0]) {
+			case "bodyChanges-breast-tenderness":
+				q="Breast Tenderness";
+				break;
+        	case "bodyChanges-hair-loss":
+        		q="Hair loss";
+        		break;
+        	case "bodyChanges-depression":
+        		q="Depression or mood swings that clearly became worse on the method";
+        		break;
+        	case "bodyChanges-nausea-vomiting":
+        		q="Nausea or vomiting";
+        		break;
+        	case "bodyChanges-weight-gain":
+        		q="Weight gain";
+        		break;
+        	case "bodyChanges-migraines":
+        		q="Migraines or very bad headaches";
+        		break;
+        	case "bodyChanges-other":
+        		q="Other changes to my body";
+        		break;
+        	case "using-getting-problems":
+        		q="I had problems getting the birth control";
+        		break;
+        	case "using-forgot-doses":
+        		q="I forgot to take it or missed too many doses";
+        		break;
+        	case "using-restart-after-period": 
+        		q="I didn't restart after stopping for my period";
+        		break;
+        	case "using-got-pregnant": 
+        		q="I got pregnant";
+        		break;
+        	case "using-other": 
+        		q="Another health problem";
+        		break;
+        	case "periods-prolonged-bleeding": 
+        		q="I didn’t like the prolonged bleeding";
+        		break;
+        	case "periods-heavy-bleeding": 
+        		q="I didn’t like the heavy bleeding";
+        		break;
+        	case "periods-irregular-bleeding": 
+        		q="I didn’t like the irregular bleeding";
+        		break;
+        	case "periods-absence-bleeding": 
+        		q="I didn’t like the absence of bleeding";
+        		break;
+        	case "periods-other":
+        		q="I didn’t like something else about my period";
+        		break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
 
 /* Mini helper function that, when given an answer property,
 returns an array with the question, and an answer 
