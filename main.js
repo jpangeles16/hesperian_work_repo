@@ -6,6 +6,10 @@ Kind of like a conveyor belt, this script takes input
 from input.addEventListener and displays the results 
 through (in this order) displayQuestionsAndAnswers, to processX functions,
 to finally the renderHTML function.
+
+I do have to say, though, I haven't taken complete
+advantage of abstraction barriers, and so
+TODO: create a class for the JSON file to help with this.
 @author John Angeles
 */
 
@@ -14,6 +18,10 @@ var url = document.URL;
 
 //Get the container from our HTML file that will display the results.
 var displayContainer = document.getElementById("displayContentsContainer");
+
+//In the event that the user has problems, I will post what their 
+//contraceptive issues are in this container
+var contraceptiveProblemsContainer = document.getElementById("displayContraceptiveIssuesContainer");
 
 /* Fourth step. A function that works in conjunction with displayContainer.
 Basically, it displays our results to our HTML file. */
@@ -138,8 +146,38 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			processQPeriodProblems(questionAndAnswerObject);
 			return;
 		case "qWhichHaveYouUsed":
-			displayContainer.insertAdjacentHTML('beforeend', "<p>FOURT PAGE</p>");
+			displayContainer.insertAdjacentHTML('beforeend', "<p>FOURTH PAGE</p>");
 			processQWhichHaveYouUsed(questionAndAnswerObject);
+			return;
+		case "qMethodProblems/ocp":
+			return;
+		case "qMethodProblems/ccap":
+			return;
+		case "qMethodProblems/diaph":
+			return;
+		case "qMethodProblems/sperm":
+			return;
+		case "qMethodProblems/pop":
+			return;
+		case "qMethodProblems/nuvaring":
+			return;
+		case "qMethodProblems/depo":
+			return;
+		case "qMethodProblems/nori":
+			return;
+		case "qMethodProblems/cyclomess":
+			return;
+		case "qMethodProblems/mcondom":
+			return;
+		case "qMethodProblems/fcondom":
+			return;
+		case "qMethodProblems/sponge":
+			return;
+		case "qMethodProblems/paragard":
+			return;
+		case "qMethodProblems/implanon":
+			return;
+		case "qMethodProblems/withd":
 			return;
 		case "qOtherMedications":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>FIFTH PAGE</p>");
@@ -523,8 +561,8 @@ function returnMethod(id) {
 with a green finish.*/
 function displayGreenResult(result) {
 	recommendationsContainer.insertAdjacentHTML('beforeend', "<p class='greenresult'>" + result + "</p>");
-
 }
+
 function displayYellowResult(result) {
 	recommendationsContainer.insertAdjacentHTML('beforeend', "<p class='yellowresult'>" + result + "</p>");
 }

@@ -2,7 +2,9 @@
 readable.
 @author John Angeles*/
 
-#displayContentsContainer, #displayRecommendations {
+#displayContentsContainer, 
+ #displayRecommendations, 
+ #displayContraceptiveIssuesContainer {
 	position: absolute;
 	width: 49%;
 	margin: 0px;
@@ -16,6 +18,10 @@ readable.
 }
 
 #displayRecommendations {
+	right: 0%;
+}
+
+#displayContraceptiveIssuesContainer {
 	right: 0%;
 }
 
