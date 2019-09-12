@@ -1,0 +1,452 @@
+{
+  "questions": [
+    {
+      "question": "qMostImportant",
+      "answers": {
+        "safe_with_breastfeeding-yes": 1,
+        "pregnant_after_stopping-yes": 2,
+        "few_side_effects-yes": 3,
+        "no_hormones-no": 4,
+        "effective_long_term-no": 5,
+        "not_interrupt_sex-no": 6,
+        "continue_periods-no": 7,
+        "fewer_periods-no": 8,
+        "decreases_symptoms_from_periods-no": 9
+      }
+    },
+    {
+      "question": "qRiskFactors",
+      "answers": {
+        "smoke-no": 1,
+        "bloodpressure-no": 2,
+        "over35-no": 3,
+        "other-risk-factors-no": 4
+      }
+    },
+    {
+      "question": "qPeriodProblems",
+      "answers": {
+        "period_bother-no": 1
+      }
+    },
+    {
+      "question": "qWhichHaveYouUsed",
+      "answers": {
+        "ocp-yes": 1,
+        "ocp-problems-yes": 2,
+        "ccap-yes": 3,
+        "ccap-problems-yes": 4,
+        "diaph-yes": 5,
+        "diaph-problems-yes": 6,
+        "sperm-yes": 7,
+        "sperm-problems-yes": 8,
+        "pop-yes": 9,
+        "pop-problems-yes": 10,
+        "nuvaring-yes": 11,
+        "nuvaring-problems-yes": 12,
+        "depo-yes": 13,
+        "depo-problems-yes": 14,
+        "nori-yes": 15,
+        "nori-problems-yes": 16,
+        "cyclomess-yes": 17,
+        "cyclomess-problems-yes": 18,
+        "mcondom-yes": 19,
+        "mcondom-problems-yes": 20,
+        "fcondom-yes": 21,
+        "fcondom-problems-yes": 22,
+        "sponge-yes": 23,
+        "sponge-problems-yes": 24,
+        "paragard-yes": 25,
+        "paragard-problems-yes": 26,
+        "implanon-yes": 27,
+        "implanon-problems-yes": 28,
+        "withd-yes": 29,
+        "withd-problems-yes": 30
+      }
+    },
+    {
+      "question": "qMethodProblems/ocp",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-nausea-vomiting-no": 4,
+        "bodyChanges-weight-gain-no": 5,
+        "bodyChanges-migraines-no": 6,
+        "bodyChanges-other-no": 7,
+        "using-getting-problems-no": 8,
+        "using-forgot-doses-no": 9,
+        "using-restart-after-period-no": 10,
+        "using-got-pregnant-no": 11,
+        "using-other-no": 12,
+        "periods-prolonged-bleeding-no": 13,
+        "periods-heavy-bleeding-no": 14,
+        "periods-irregular-bleeding-no": 15,
+        "periods-absence-bleeding-no": 16,
+        "periods-other-no": 17
+      }
+    },
+    {
+      "question": "qMethodProblems/ccap",
+      "answers": {
+        "bodyChanges-cramping-pain-no": 1,
+        "bodyChanges-discharge-no": 2,
+        "bodyChanges-other-no": 3,
+        "using-getting-problems-no": 4,
+        "using-forgot-doses-no": 5,
+        "using-restart-after-period-no": 6,
+        "using-not-always-use-no": 7,
+        "using-other-no": 8,
+        "using-got-pregnant-no": 9
+      }
+    },
+    {
+      "question": "qMethodProblems/diaph",
+      "answers": {
+        "bodyChanges-cramping-pain-no": 1,
+        "bodyChanges-discharge-no": 2,
+        "using-forgot-doses-no": 3,
+        "using-restart-after-period-no": 4,
+        "using-not-always-use-no": 5,
+        "using-other-no": 6,
+        "using-got-pregnant-no": 7,
+        "using-partner-like-no": 8
+      }
+    },
+    {
+      "question": "qMethodProblems/sperm",
+      "answers": {
+        "using-getting-problems-no": 1,
+        "using-restart-after-period-no": 2,
+        "using-not-always-use-no": 3,
+        "using-other-no": 4,
+        "using-got-pregnant-no": 5,
+        "using-partner-like-no": 6
+      }
+    },
+    {
+      "question": "qMethodProblems/pop",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-nausea-vomiting-no": 4,
+        "bodyChanges-migraines-no": 5,
+        "bodyChanges-other-no": 6,
+        "using-getting-problems-no": 7,
+        "using-forgot-doses-no": 8,
+        "using-restart-after-period-no": 9,
+        "using-got-pregnant-no": 10,
+        "using-partner-like-no": 11,
+        "using-other-no": 12,
+        "periods-prolonged-bleeding-no": 13,
+        "periods-heavy-bleeding-no": 14,
+        "periods-irregular-bleeding-no": 15,
+        "periods-absence-bleeding-no": 16,
+        "periods-other-no": 17
+      }
+    },
+    {
+      "question": "qMethodProblems/nuvaring",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-nausea-vomiting-no": 4,
+        "bodyChanges-weight-gain-no": 5,
+        "bodyChanges-migraines-no": 6,
+        "bodyChanges-discharge-no": 7,
+        "bodyChanges-other-no": 8,
+        "using-getting-problems-no": 9,
+        "using-forgot-doses-no": 10,
+        "using-restart-after-period-no": 11,
+        "using-other-no": 15,
+        "using-got-pregnant-no": 13,
+        "using-partner-like-no": 14,
+        "periods-prolonged-bleeding-no": 16,
+        "periods-heavy-bleeding-no": 17,
+        "periods-irregular-bleeding-no": 18,
+        "periods-absence-bleeding-no": 19,
+        "periods-other-no": 20
+      }
+    },
+    {
+      "question": "qMethodProblems/depo",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-weight-gain-no": 4,
+        "bodyChanges-migraines-no": 5,
+        "bodyChanges-other-no": 6,
+        "using-getting-problems-no": 7,
+        "using-forgot-doses-no": 8,
+        "using-got-pregnant-no": 9,
+        "health-high-blood-pressure-no": 10,
+        "health-blood-clot-no": 11,
+        "health-stroke-heart-attack-no": 12,
+        "health-other-no": 13,
+        "periods-prolonged-bleeding-no": 14,
+        "periods-heavy-bleeding-no": 15,
+        "periods-irregular-bleeding-no": 16,
+        "periods-absence-bleeding-no": 17,
+        "periods-other-no": 18
+      }
+    },
+    {
+      "question": "qMethodProblems/nori",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-weight-gain-no": 4,
+        "bodyChanges-migraines-no": 5,
+        "bodyChanges-other-no": 6,
+        "using-getting-problems-no": 7,
+        "using-forgot-doses-no": 8,
+        "using-got-pregnant-no": 9,
+        "using-other-no": 10,
+        "periods-prolonged-bleeding-no": 11,
+        "periods-heavy-bleeding-no": 12,
+        "periods-irregular-bleeding-no": 13,
+        "periods-absence-bleeding-no": 14,
+        "periods-other-no": 15
+      }
+    },
+    {
+      "question": "qMethodProblems/cyclomess",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-weight-gain-no": 4,
+        "bodyChanges-migraines-no": 5,
+        "bodyChanges-other-no": 6,
+        "using-getting-problems-no": 7,
+        "using-forgot-doses-no": 8,
+        "using-got-pregnant-no": 9,
+        "health-high-blood-pressure-no": 10,
+        "health-blood-clot-no": 11,
+        "health-stroke-heart-attack-no": 12,
+        "health-other-no": 13,
+        "periods-prolonged-bleeding-no": 14,
+        "periods-heavy-bleeding-no": 15,
+        "periods-irregular-bleeding-no": 16,
+        "periods-absence-bleeding-no": 17,
+        "periods-other-no": 18
+      }
+    },
+    {
+      "question": "qMethodProblems/mcondom",
+      "answers": {
+        "using-getting-problems-no": 1,
+        "using-forgot-doses-no": 2,
+        "using-not-always-use-no": 3,
+        "using-other-no": 4,
+        "using-got-pregnant-no": 5,
+        "using-partner-like-no": 6
+      }
+    },
+    {
+      "question": "qMethodProblems/fcondom",
+      "answers": {
+        "using-getting-problems-no": 1,
+        "using-forgot-doses-no": 2,
+        "using-restart-after-period-no": 3,
+        "using-not-always-use-no": 4,
+        "using-other-no": 5,
+        "using-got-pregnant-no": 6,
+        "using-partner-like-no": 7
+      }
+    },
+    {
+      "question": "qMethodProblems/sponge",
+      "answers": {
+        "bodyChanges-cramping-pain-no": 1,
+        "bodyChanges-discharge-no": 2,
+        "bodyChanges-other-no": 3,
+        "using-getting-problems-no": 4,
+        "using-restart-after-period-no": 5,
+        "using-not-always-use-no": 6,
+        "using-other-no": 7,
+        "using-got-pregnant-no": 8,
+        "using-partner-like-no": 9
+      }
+    },
+    {
+      "question": "qMethodProblems/paragard",
+      "answers": {
+        "bodyChanges-cramping-pain-no": 1,
+        "bodyChanges-discharge-no": 2,
+        "bodyChanges-other-no": 3,
+        "using-got-pregnant-no": 4,
+        "using-partner-like-no": 5,
+        "periods-prolonged-bleeding-no": 6,
+        "periods-heavy-bleeding-no": 7,
+        "periods-irregular-bleeding-no": 8,
+        "periods-other-no": 9
+      }
+    },
+    {
+      "question": "qMethodProblems/implanon",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-nausea-vomiting-no": 4,
+        "bodyChanges-weight-gain-no": 5,
+        "bodyChanges-migraines-no": 6,
+        "bodyChanges-other-no": 7,
+        "using-got-pregnant-no": 8,
+        "using-other-no": 9,
+        "periods-prolonged-bleeding-no": 10,
+        "periods-heavy-bleeding-no": 11,
+        "periods-irregular-bleeding-no": 12,
+        "periods-absence-bleeding-no": 13,
+        "periods-other-no": 14
+      }
+    },
+    {
+      "question": "qMethodProblems/withd",
+      "answers": {
+        "using-not-always-use-no": 1,
+        "using-other-no": 2,
+        "using-got-pregnant-no": 3,
+        "using-partner-like-no": 4
+      }
+    },
+    {
+      "question": "qOtherMedications",
+      "answers": {
+        "stjohnswort-no": 1,
+        "antifungal-no": 2
+      }
+    },
+    {
+      "question": "qOtherHealthIssues",
+      "answers": {
+        "acne-no": 1,
+        "hair-no": 2,
+        "endometriosis-no": 3
+      }
+    },
+    {
+      "question": "qWhenHaveChildren",
+      "answers": {
+        "have-children-year": 1
+      }
+    },
+    {
+      "question": "qOtherQuestions",
+      "answers": {
+        "i-put-no": 1,
+        "healthworker-put-no": 2,
+        "partner-willing-no": 3,
+        "keep-secret-no": 4,
+        "breastfeeding-no": 5,
+        "sti-protect-no": 6
+      }
+    },
+    {
+      "question": "qMethodSpecific",
+      "answers": {
+        "birth_control_pills-no": 1,
+        "birth_control_injections-no": 2,
+        "contraceptive_ring-no": 3,
+        "iud-no": 4,
+        "contraceptive_implant-no": 5
+      }
+    },
+    {
+      "question": "results"
+    }
+  ],
+  "results": {
+    "green": [
+      {
+        "id": "mcondom",
+        "score": 0.5666666666666667
+      },
+      {
+        "id": "fam",
+        "score": 0.5499999999999999
+      }
+    ],
+    "yellow": [
+      {
+        "id": "withd",
+        "score": 0.48666666666666664
+      },
+      {
+        "id": "fcondom",
+        "score": 0.4514285714285714
+      },
+      {
+        "id": "diaph",
+        "score": 0.36
+      },
+      {
+        "id": "sperm",
+        "score": 0.355
+      },
+      {
+        "id": "sponge",
+        "score": 0.2914285714285714
+      },
+      {
+        "id": "ccap",
+        "score": 0.2914285714285714
+      },
+      {
+        "id": "ortho_evra",
+        "score": 0.049538461538461545
+      },
+      {
+        "id": "ocp",
+        "score": -0.08846153846153845
+      }
+    ],
+    "red": [
+      {
+        "id": "vas",
+        "score": 0.2852857142857143
+      },
+      {
+        "id": "btl",
+        "score": 0.28428571428571425
+      },
+      {
+        "id": "pop",
+        "score": 0.21230769230769234
+      },
+      {
+        "id": "mirena",
+        "score": 0.13528125
+      },
+      {
+        "id": "paragard",
+        "score": 0.13527272727272727
+      },
+      {
+        "id": "implanon",
+        "score": 0.10576719576719577
+      },
+      {
+        "id": "nuvaring",
+        "score": 0.06133333333333332
+      },
+      {
+        "id": "cyclomess",
+        "score": 0.05196428571428572
+      },
+      {
+        "id": "nori",
+        "score": -0.008660714285714282
+      },
+      {
+        "id": "depo",
+        "score": -0.07794642857142856
+      }
+    ]
+  }
+}

@@ -35,20 +35,18 @@ function renderHTML(question, answer) {
 
 // Input is the input element from our HTML script.
 var input = document.getElementById("fileInput");
-
 const reader = new FileReader(); 
 
 /* First step. When the input changes, we will end up calling this
  function that will ultimately call the onload function. */
 input.addEventListener('change', function (e) {
-
 	// As soon as we read the text, we will call the following function.
 	reader.onload = function() {
 
-		//First, ensure that the url is properly decoded
-		url = decodeURL(url);
+		// //First, ensure that the url is properly decoded
+		// url = decodeURL(url);
 
-		// Parse the url from the reader
+		// // Parse the url from the reader
 		var parsedFile = JSON.parse(reader.result);
 
 		// Fetch the questions.
@@ -102,8 +100,6 @@ function decodeURL(url) {
 	// Then, remove the other unnecessary comments
 	var bracketSubstringIndex = url.indexOf("{");
 	return url.substring(bracketSubstringIndex, url.length);
-
-
 }
 
 /* Second step. Main function that, given a questionsList recently gotten
@@ -267,6 +263,7 @@ function processQPeriodProblems(questionObject) {
 	}
 }
 
+/* Handles I think the types of contraceptives I've used. */
 function processQWhichHaveYouUsed(questionObject) {
 	var answers = questionObject.answers;
 	var q;
