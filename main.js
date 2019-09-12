@@ -169,11 +169,13 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>BIRTH CONTROL PILLS ISSUES</p>");
 			processQMethodProblemsOCP(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/ccap":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/ccap": // CCAP
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>CCAP ISSUES</p>");
+			processQMethodProblemsCCAP(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/diaph":
+		case "qMethodProblems/diaph": //TODO: Continue here
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+			processQMethodProblemsDiaph()
 			return;
 		case "qMethodProblems/sperm":
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
@@ -281,25 +283,64 @@ function processQMethodProblemsOCP(questionAndAnswerObject) {
         		q="Another health problem";
         		break;
         	case "periods-prolonged-bleeding": 
-        		q="I didn’t like the prolonged bleeding";
+        		q="I didn't like the prolonged bleeding";
         		break;
         	case "periods-heavy-bleeding": 
-        		q="I didn’t like the heavy bleeding";
+        		q="I didn't like the heavy bleeding";
         		break;
         	case "periods-irregular-bleeding": 
-        		q="I didn’t like the irregular bleeding";
+        		q="I didn't like the irregular bleeding";
         		break;
         	case "periods-absence-bleeding": 
-        		q="I didn’t like the absence of bleeding";
+        		q="I didn't like the absence of bleeding";
         		break;
         	case "periods-other":
-        		q="I didn’t like something else about my period";
+        		q="I didn't like something else about my period";
         		break;
 		}
 		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
 	}
 }
 
+function processQMethodProblemsCCAP(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+	// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+		    case "bodyChanges-cramping-pain":
+		    	q="Cramping or pain";
+		    	break;
+	        case "bodyChanges-discharge":
+	        	q="Discharge";
+	        	break;
+	        case "bodyChanges-other":
+	        	q="Other changes to my body";
+	        	break;
+	        case "using-getting-problems":
+	        	q="I had problems getting the birth control";
+	        	break;
+	        case "using-forgot-doses":
+	        	q="I forgot to use it";
+	        	break;
+	        case "using-restart-after-period":
+	        	q="I didn't restart after stopping for my period";
+	        	break;
+	        case "using-not-always-use":
+	        	q="I didn't use it every time I had sex";
+	        	break;
+	        case "using-other":
+	        	q="I had another problem using it correctly";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	    }
+	    renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
 
 /* Mini helper function that, when given an answer property,
 returns an array with the question, and an answer 
