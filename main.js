@@ -173,15 +173,17 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>CCAP ISSUES</p>");
 			processQMethodProblemsCCAP(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/diaph": //TODO: Continue here
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
-			processQMethodProblemsDiaph()
+		case "qMethodProblems/diaph": // Diaphragm 
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>DIAPHGRAM ISSUES</p>");
+			processQMethodProblemsDiaph(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/sperm":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/sperm": 
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>SPERM ISSUES</p>");
+			processQMethodProblemsSperm(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/pop":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/pop": // Mini pills
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>MINI PILLS ISSUES</p>");
+			processQMethodProblemsPop(questionAndAnswerObject);
 			return;
 		case "qMethodProblems/nuvaring":
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
@@ -341,6 +343,144 @@ function processQMethodProblemsCCAP(questionAndAnswerObject) {
 	    renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
 	}
 }
+
+function processQMethodProblemsDiaph(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+	// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+			case "bodyChanges-cramping-pain":
+				q="Cramping or pain";
+				break;
+	        case "bodyChanges-discharge":
+	        	q="Discharge";
+	        	break;
+	        case "using-forgot-doses":
+	        	q="I forgot to put it in";
+	        	break;
+	        case "using-restart-after-period":
+	        	q="I didn't restart after stopping for my period";
+	        	break;
+	        case "using-not-always-use":
+	        	q="I didn't use it every time I had sex";
+	        	break;
+	        case "using-other":
+	        	q="I had another problem using it correctly";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-partner-like":
+	        	q="My partner didn't like it";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsSperm(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+			case "using-getting-problems":
+				q="I had problems getting the birth control";
+				break;
+	        case "using-restart-after-period":
+	        	q="I didn't restart after stopping for my period";
+	        	break;
+	        case "using-not-always-use":
+	        	q="I didn't use it every time I had sex";
+	        	break;
+	        case "using-other-no":
+	        	q="I had another problem using it correctly";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-other":
+	        	q="I had another problem using it correctly";
+	        	break;
+	        case "using-partner-like":
+	        	q="My partner didn't like it";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+/* Mini pills */
+function processQMethodProblemsPop(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+			case "bodyChanges-breast-tenderness":
+				q="Breast tenderness";
+				break;
+	        case "bodyChanges-hair-loss":
+	        	q="Hair loss";
+	        	break;
+	        case "bodyChanges-depression":
+	        	q="Depression or mood swings that clearly became worse on the method";
+	        	break;
+	        case "bodyChanges-nausea-vomiting":
+	        	q="Nausea or vomiting";
+	        	break;
+			case "bodyChanges-migraines":
+				q="Migraines or very bad headaches";
+				break;
+	        case "bodyChanges-other":
+	        	q="Other changes to my body";
+	        	break;
+	        case "using-getting-problems":
+	        	q="I had problems getting the birth control";
+	        	break;
+	        case "using-forgot-doses":
+	        	q="I forgot to take it or missed too many doses";
+	        	break;
+	        case "using-restart-after-period":
+	        	q="I didn't restart after stopping for my period";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-partner-like":
+	        	q="My partner didn't like it";
+	        	break;
+	        case "using-other":
+	        	q="Another health problem";
+	        	break;
+	        case "periods-prolonged-bleeding":
+	        	q="I didn't like the prolonged bleeding";
+	        	break;
+	        case "periods-heavy-bleeding":
+	        	q="I didn't like the heavy bleeding";
+	        	break;
+	        case "periods-irregular-bleeding":
+	        	q="I didn't like the irregular bleeding";
+	        	break;
+	        case "periods-absence-bleeding":
+	        	q="I didn't like the absence of bleeding";
+	        	break;
+	        case "periods-other":
+	        	q="I didn't like something else about my period";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+//==========//
 
 /* Mini helper function that, when given an answer property,
 returns an array with the question, and an answer 
