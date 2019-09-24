@@ -185,17 +185,21 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>MINI PILLS ISSUES</p>");
 			processQMethodProblemsPop(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/nuvaring":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/nuvaring": //Nuva ring
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>NUVA RING ISSUES</p>");
+			processQMethodProblemsNuvaring(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/depo":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/depo": // Depo
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>DEPO ISSUES</p>");
+			processQMethodProblemsDepo(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/nori":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/nori": // Noristerat
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>NORISTERAT ISSUES</p>");
+			processQMethodProblemsNori(questionAndAnswerObject);
 			return;
 		case "qMethodProblems/cyclomess":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>CYCLOFEM AND MESSYGNA PROBLEMS</p>");
+			processQMethodProblemsCyclomess(questionAndAnswerObject);
 			return;
 		case "qMethodProblems/mcondom":
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
@@ -458,6 +462,268 @@ function processQMethodProblemsPop(questionAndAnswerObject) {
 	        	q="My partner didn't like it";
 	        	break;
 	        case "using-other":
+	        	q="Another health problem";
+	        	break;
+	        case "periods-prolonged-bleeding":
+	        	q="I didn't like the prolonged bleeding";
+	        	break;
+	        case "periods-heavy-bleeding":
+	        	q="I didn't like the heavy bleeding";
+	        	break;
+	        case "periods-irregular-bleeding":
+	        	q="I didn't like the irregular bleeding";
+	        	break;
+	        case "periods-absence-bleeding":
+	        	q="I didn't like the absence of bleeding";
+	        	break;
+	        case "periods-other":
+	        	q="I didn't like something else about my period";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsNuvaring(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+        	case "bodyChanges-breast-tenderness":
+        		q = "Breast tenderness";
+        		break;
+        	case "bodyChanges-hair-loss":
+        		q = "Hair loss";
+        		break;
+        	case "bodyChanges-depression":
+        		q = "Depression or mood swings that clearly became worse on the method";
+        		break;
+        	case "bodyChanges-nausea-vomiting":
+        		q = "Nausea or vomiting";
+        		break;
+        	case "bodyChanges-weight-gain":
+        		q = "Weight gain";
+        		break;
+        	case "bodyChanges-migraines":
+        		q = "Migraines or very bad headaches";
+        		break;
+        	case "bodyChanges-discharge":
+        		q = "Discharge";
+        		break;
+        	case "bodyChanges-other":
+        		q = "Other changes to my body";
+        		break;
+        	case "using-getting-problems":
+        		q = "I had problems getting the birth control";
+        		break;
+        	case "using-forgot-doses":
+        		q = "I forgot to put it in";
+        		break;
+        	case "using-restart-after-period":
+        		q = "I didn't restart after stopping for my period";
+        		break;
+        	case "using-other":
+        		q = "I had another problem using it correctly";
+        		break;
+        	case "using-got-pregnant":
+        		q = "I got pregnant";
+        		break;
+        	case "using-partner-like":
+        		q = "Another health problem";
+        		break;
+        	case "periods-prolonged-bleeding":
+        		q = "I didn't like the prolonged bleeding";
+        		break;
+        	case "periods-heavy-bleeding":
+        		q = "I didn't like the heavy bleeding";
+        		break;
+        	case "periods-irregular-bleeding":
+        		q = "I didn't like the irregular bleeding";
+        		break;
+        	case "periods-absence-bleeding":
+        		q = "I didn't like the absence of bleeding";
+        		break;
+        	case "periods-other":
+        		q = "I didn't like something else about my period";
+        		break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}	
+
+function processQMethodProblemsDepo(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+			case "bodyChanges-breast-tenderness":
+				q = "Breast tenderness";
+				break;
+	        case "bodyChanges-hair-loss":
+	        	q = "Hair loss";
+	        	break;
+	        case "bodyChanges-depression":
+	        	q = "Depression or mood swings that clearly became worse on the method";
+	        	break;
+	        case "bodyChanges-weight-gain":
+	        	q = "Weight gain";
+	        	break;
+	        case "bodyChanges-migraines":
+	        	q = "Migraines or very bad headaches";
+	        	break;
+	        case "bodyChanges-other":
+	        	q = "Other changes to my body";
+	        	break;
+	        case "using-getting-problems":
+	        	q = "I had problems getting the birth control";
+	        	break;
+	        case "using-forgot-doses":
+	        	q = "I didn't get my next injection";
+	        	break;
+	        case "using-got-pregnant":
+	        	q = "I got pregnant";
+	        	break;
+	        case "health-high-blood-pressure":
+	        	q = "High blood pressure";
+	        	break;
+	        case "health-blood-clot":
+	        	q = "Blood clot in vein or lungs";
+	        	break;
+	        case "health-stroke-heart-attack":
+	        	q = "Stroke or heart attack";
+	        	break;
+	        case "health-other":
+	        	q = "Another health problem";
+	        	break;
+	        case "periods-prolonged-bleeding":
+	        	q = "I didn't like the prolonged bleeding";
+	        	break;
+	        case "periods-heavy-bleeding":
+	        	q = "I didn't like the heavy bleeding";
+	        	break;
+	        case "periods-irregular-bleeding":
+	        	q = "I didn't like the irregular bleeding";
+	        	break;
+	        case "periods-absence-bleeding":
+	        	q = "I didn't like the absence of bleeding";
+	        	break;
+	        case "periods-other":
+	        	q = "I didn't like something else about my period";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsNori(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+			case "bodyChanges-breast-tenderness":
+				q="Breast tenderness";
+				break;
+        	case "bodyChanges-hair-loss":
+        		q="Hair loss";
+        		break;
+        	case "bodyChanges-depression":
+        		q="Depression or mood swings that clearly became worse on the method";
+        		break;
+        	case "bodyChanges-weight-gain":
+        		q="Weight gain";
+        		break;
+        	case "bodyChanges-migraines":
+        		q="Migraines or very bad headaches";
+        		break;
+        	case "bodyChanges-other":
+        		q="Other changes to my body";
+        		break;
+        	case "using-getting-problems":
+        		q="I had problems getting the birth control";
+        		break;
+        	case "using-forgot-doses":
+        		q="I forgot to get it";
+        		break;
+        	case "using-got-pregnant":
+        		q="I got pregnant";
+        		break;
+        	case "using-other":
+        		q="Another health problem";
+        		break;
+        	case "periods-prolonged-bleeding":
+        		q="I didn't like the prolonged bleeding";
+        		break;
+        	case "periods-heavy-bleeding":
+        		q="I didn't like the heavy bleeding";
+        		break;
+        	case "periods-irregular-bleeding":
+        		q="I didn't like the irregular bleeding";
+        		break;
+        	case "periods-absence-bleeding":
+        		q="I didn't like the absence of bleeding";
+        		break;
+        	case "periods-other":
+        		q="I didn't like something else about my period";
+        		break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsCyclomess(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+	        case "bodyChanges-breast-tenderness":
+	        	q="Breast tenderness";
+	        	break;
+	        case "bodyChanges-hair-loss":
+	        	q="Hair loss";
+	        	break;
+	        case "bodyChanges-depression":
+	        	q="Depression or mood swings that clearly became worse on the method";
+	        	break;
+	        case "bodyChanges-weight-gain":
+	        	q="Weight gain";
+	        	break;
+	        case "bodyChanges-migraines":
+	        	q="Migraines or very bad headaches";
+	        	break;
+	        case "bodyChanges-other":
+	        	q="Other changes to my body";
+	        	break;
+	        case "using-getting-problems":
+	        	q="I had problems getting the birth control";
+	        	break;
+	        case "using-forgot-doses":
+	        	q="I didn't get my next injection";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "health-high-blood-pressure":
+	        	q="High blood pressure";
+	        	break;
+	        case "health-blood-clot":
+	        	q="Blood clot in vein or lungs";
+	        	break;
+	        case "health-stroke-heart-attack":
+	        	q="Stroke or heart attack";
+	        	break;
+	        case "health-other":
 	        	q="Another health problem";
 	        	break;
 	        case "periods-prolonged-bleeding":
@@ -745,6 +1011,8 @@ function processQMethodSpecific(questionObject) {
 
 	}
 }
+
+
 
 // =================================================================
 
