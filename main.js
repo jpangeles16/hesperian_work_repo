@@ -23,6 +23,9 @@ var displayContainer = document.getElementById("displayContentsContainer");
 //contraceptive issues are in this container
 var contraceptiveProblemsContainer = document.getElementById("displayContraceptiveIssuesContainer");
 
+//The container where we list out all of our health issues (TB, cancer, etc)
+var healthProblemsContainer = document.getElementById("displayhealthissuescontainer");
+
 /* Fourth step. A function that works in conjunction with displayContainer.
 Basically, it displays our results to our HTML file. */
 function renderHTML(question, answer) {
@@ -55,6 +58,22 @@ function renderHTMLForContraceptiveProblems(question, answer) {
 	var answer = "<p class='" + answerClass + "'>You answered: " + answer + "</p>";
 	contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', qDisplay);
 	contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', answer);
+}
+
+/* Fourth step. A function that works in conjunction with the health problems container. */
+function renderHTMLForContraceptiveProblems(question, answer) {
+	var answerClass;
+
+	if (answer == "NO") {
+		answerClass = "no";
+	} else {
+		answerClass = "yes";
+	}
+
+	var qDisplay = "<p class='" + answerClass + "'>Question: " + question + "</p>";
+	var answer = "<p class='" + answerClass + "'>You answered: " + answer + "</p>";
+	healthProblemsContainer.insertAdjacentHTML('beforeend', qDisplay);
+	healthProblemsContainer.insertAdjacentHTML('beforeend', answer);
 }
 
 // Input is the input element from our HTML script.
@@ -148,25 +167,42 @@ that has a question and a set of answers.
 */
 function processQuestionAndAnswerObject(questionAndAnswerObject) {
 	var question = questionAndAnswerObject.question;
+	if (haveSeenQuestion(question)) {
+		return;
+	}
 	switch (question) {
+		/* There is a bug where we have multiple redundant questions in the JSON file
+		This function call should handle it. If we see the same question twice, then 
+		we just return.
+		*/
 		case "qMostImportant":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>FIRST PAGE</p>");
 			processQMostImportant(questionAndAnswerObject);
+			haveSeen.qMostImportant = true;
 			return;
 		case "qRiskFactors":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>SECOND PAGE</p>");
 			processQRiskFactors(questionAndAnswerObject);
+			haveSeen.qRiskFactors = true;
 			return;
+			// If we say yes to the health problems, we then list out what the user inputted. The following does that
+		case "qSeriousHealthProblems":
+			healthProblemsContainer.insertAdjacentHTML('beforeend', "<p>HEALTH PROBLEMS</p>");
+			processQSeriousHealthProblems(questionAndAnswerObject);
+			haveSeen.qSeriousHealthProblems = true;
 		case "qPeriodProblems":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>THIRD PAGE</p>");
 			processQPeriodProblems(questionAndAnswerObject);
+			haveSeen.qPeriodProblems = true;
 			return;
 		case "qWhichHaveYouUsed":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>FOURTH PAGE</p>");
 			processQWhichHaveYouUsed(questionAndAnswerObject);
+			haveSeen.qWhichHaveYouUsed = true;
 			return;
-		case "qMethodProblems/ocp": //OCP means birth control pills
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>BIRTH CONTROL PILLS ISSUES</p>");
+			// Here we branch off if we encounter issues with contraceptives
+		case "qMethodProblems/ocp": // OCP means birth control pills
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>BIRTH CONTROL ISSUES</p>");
 			processQMethodProblemsOCP(questionAndAnswerObject);
 			return;
 		case "qMethodProblems/ccap": // CCAP
@@ -197,50 +233,127 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>NORISTERAT ISSUES</p>");
 			processQMethodProblemsNori(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/cyclomess":
+		case "qMethodProblems/cyclomess": // Cyclomess
 			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>CYCLOFEM AND MESSYGNA PROBLEMS</p>");
 			processQMethodProblemsCyclomess(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/mcondom":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/mcondom": // Male condom
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>MALE CONDOM ISSUES</p>");
+			processQMethodProblemsMCondom(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/fcondom":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/fcondom": // Female condom
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>FEMALE CONDOM ISSUES</p>");
+			processQMethodProblemsFCondom(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/sponge":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/sponge": // Sponge
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>SPONGE ISSUES</p>");
+			processQMethodProblemsSponge(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/paragard":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/paragard": // Paragard
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>PARAGARD ISSUES</p>");
+			processQMethodProblemsParagard(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/implanon":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/implanon": // Implanon issues
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>IMPLANON ISSUES</p>");
+			processQMethodProblemsImplanon(questionAndAnswerObject);
 			return;
-		case "qMethodProblems/withd":
-			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>Test</p>");
+		case "qMethodProblems/withd": // Withdrawal
+			contraceptiveProblemsContainer.insertAdjacentHTML('beforeend', "<p>WITHDRAWAL ISSUES</p>");
+			processQMethodProblemsWithdrawal(questionAndAnswerObject);
 			return;
 		case "qOtherMedications":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>FIFTH PAGE</p>");
 			processQOtherMedications(questionAndAnswerObject);
+			haveSeen.qOtherMedications = true;
+
 			return;
 		case "qOtherHealthIssues":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>SIXTH PAGE</p>");
 			processQOtherHealthIssues(questionAndAnswerObject);
+			haveSeen.qOtherHealthIssues = true;
+
 			return;
 		case "qWhenHaveChildren":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>SEVENTH PAGE</p>");
 			processQWhenHaveChildren(questionAndAnswerObject);
+			haveSeen.qWhenHaveChildren = true;
+
 			return;
 		case "qOtherQuestions":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>EIGHTH PAGE</p>");
 			processQOtherQuestions(questionAndAnswerObject);
+			haveSeen.qOtherQuestions = true;
+
 			return;
 		case "qMethodSpecific":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>NINTH PAGE</p>");
 			processQMethodSpecific(questionAndAnswerObject);
+			haveSeen.qMethodSpecific = true;
+
 			return;
 	}
 }
+
+/* Takes a questionAndAnswer object. If we have seen it, then in processQuestionAndAnswerObject
+we just return out. This returns true if we have seen the questionAndAnswerObject.
+*/
+function haveSeenQuestion(question) {
+	var code = 0;
+	if (question == "qMostImportant") {
+		return haveSeen.qMostImportant;
+	} else if (question == "qRiskFactors") {
+		return haveSeen.qRiskFactors;
+	} else if (question == "qSeriousHealthProblems") {
+		return haveSeen.qSeriousHealthProblems;
+	} else if (question == "qPeriodProblems") {
+		return haveSeen.qPeriodProblems;
+	} else if (question == "qWhichHaveYouUsed") {
+		return haveSeen.qWhichHaveYouUsed;
+	} else if (question == "qOtherMedications") {
+		return haveSeen.qOtherMedications;
+	} else if (question == "qOtherHealthIssues") {
+		return haveSeen.qOtherHealthIssues;
+	} else if (question == "qWhenHaveChildren") {
+		return haveSeen.qWhenHaveChildren;
+	} else if (question == "qOtherQuestions") {
+		return haveSeen.qOtherQuestions;
+	} else if (question == "qMethodSpecific") {
+		return haveSeen.qMethodSpecific;
+	} else {
+		console.log("Invalid question! Called from haveSeenQuestion");
+		return;
+	}
+}
+
+/* Data structure where we return true if we have seen the object.
+*/
+var haveSeen = {
+	qMostImportant: false,
+	qRiskFactors: false,
+	qSeriousHealthProblems: false,
+	qPeriodProblems: false,
+	qWhichHaveYouUsed: false,
+	// qMethodProblems/ocp: false,
+	// qMethodProblems/ccap: false,
+	// qMethodProblems/diaph: false,
+	// qMethodProblems/sperm: false,
+	// qMethodProblems/pop: false,
+	// qMethodProblems/nuvaring: false,
+	// qMethodProblems/depo: false,
+	// qMethodProblems/nori: false,
+	// qMethodProblems/cyclomess: false,
+	// qMethodProblems/mcondom: false,
+	// qMethodProblems/fcondom: false,
+	// qMethodProblems/sponge: false,
+	// qMethodProblems/paragard: false,
+	// qMethodProblems/implanon: false,
+	// qMethodProblems/withd: false,
+	qOtherMedications: false,
+	qOtherHealthIssues: false,
+	qWhenHaveChildren: false,
+	qOtherQuestions: false,
+	qMethodSpecific: false
+};
 
 //===== Set of functions that display user response when user inputs issues with contraceptives =====//
 /* OCP means birth controll pills */
@@ -746,7 +859,301 @@ function processQMethodProblemsCyclomess(questionAndAnswerObject) {
 	}
 }
 
+function processQMethodProblemsMCondom(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+			case "using-getting-problems":
+				q="I had problems getting the birth control";
+				break;
+	        case "using-forgot-doses":
+	        	q="I forgot to use it";
+	        	break;
+	        case "using-not-always-use":
+	        	q="I didn't use it every time I had sex";
+	        	break;
+	        case "using-other":
+	        	q="I had another problem using it correctly";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-partner-like":
+	        	q="My partner didn't like it";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsFCondom(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+	        case "using-getting-problems":
+	        	q = "I had problems getting the birth control";
+	        	break;
+	        case "using-forgot-doses":
+	        	q = "I forgot to use it";
+	        	break;
+	        case "using-restart-after-period":
+	        	q = "I didn't restart after stopping for my period";
+	        	break;
+	        case "using-not-always-use":
+	        	q = "I didn't use it every time I had sex";
+	        	break;
+	        case "using-other":
+	        	q = "I had another problem using it correctly";
+	        	break;
+	        case "using-got-pregnant":
+	        	q = "I got pregnant";
+	        	break;
+	        case "using-partner-like":
+	        	q = "My partner didn't like it";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsSponge(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+	        case "bodyChanges-cramping-pain":
+	        	q="Cramping or pain";
+	        	break;
+	        case "bodyChanges-discharge":
+	        	q="Discharge";
+	        	break;
+	        case "bodyChanges-other":
+	        	q="Other changes to my body";
+	        	break;
+	        case "using-getting-problems":
+	        	q="I had problems getting the birth control";
+	        	break;
+	        case "using-restart-after-period":
+	        	q="I didn't restart after stopping for my period";
+	        	break;
+	        case "using-not-always-use":
+	        	q="I didn't use it every time I had sex";
+	        	break;
+	        case "using-other":
+	        	q="I had another problem using it correctly";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-partner-like":
+	        	q="My partner didn't like it";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsParagard(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+	        case "bodyChanges-cramping-pain":
+	        	q="Cramping or pain";
+	        	break;
+	        case "bodyChanges-discharge":
+	        	q="Discharge";
+	        	break;
+	        case "bodyChanges-other":
+	        	q="Other changes to my body";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-partner-like":
+	        	q="My partner didn't like it";
+	        	break;
+	        case "periods-prolonged-bleeding":
+	        	q="I didn't like the prolonged bleeding";
+	        	break;
+	        case "periods-heavy-bleeding":
+	        	q="I didn't like the heavy bleeding";
+	        	break;
+	        case "periods-irregular-bleeding":
+	        	q="I didn't like the irregular bleeding";
+	        	break;
+	        case "periods-other":
+	        	q="I didn't like something else about my period";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
+function processQMethodProblemsImplanon(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+	        case "bodyChanges-breast-tenderness":
+	        	q="Breast tenderness";
+	        	break;
+	        case "bodyChanges-hair-loss":
+	        	q="Hair loss";
+	        	break;
+	        case "bodyChanges-depression":
+	        	q="Depression or mood swings that clearly became worse on the method";
+	        	break;
+	        case "bodyChanges-nausea-vomiting":
+	        	q="Nausea or vomiting";
+	        	break;
+	        case "bodyChanges-weight-gain":
+	        	q="Weight gain";
+	        	break;
+	        case "bodyChanges-migraines":
+	        	q="Migraines or very bad headaches";
+	        	break;
+	        case "bodyChanges-other":
+	        	q="Other changes to my body";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-other":
+	        	q="Another health problem";
+	        	break;
+	        case "periods-prolonged-bleeding":
+	        	q="I didn't like the prolonged bleeding";
+	        	break;
+	        case "periods-heavy-bleeding":
+	        	q="I didn't like the heavy bleeding";
+	        	break;
+	        case "periods-irregular-bleeding":
+	        	q="I didn't like the irregular bleeding";
+	        	break;
+	        case "periods-absence-bleeding":
+	        	q="I didn't like the absence of bleeding";
+	        	break;
+	        case "periods-other":
+	        	q="I didn't like something else about my period";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+} 
+
+function processQMethodProblemsWithdrawal(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+	        case "using-not-always-use":
+	        	q="I didn't use it every time I had sex";
+	        	break;
+	        case "using-other":
+	        	q="I had another problem using it correctly";
+	        	break;
+	        case "using-got-pregnant":
+	        	q="I got pregnant";
+	        	break;
+	        case "using-partner-like":
+	        	q="My partner didn't like it";
+	        	break;
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+} 
+
 //==========//
+
+//===== Health issues =====//
+function processQSeriousHealthProblems(questionAndAnswerObject) {
+	var answers = questionAndAnswerObject.answers;
+		// Variable to store question and answer pair.
+	var q;
+
+	for (var prop in answers) {
+		var questionAnswerPair = getUserResponse(prop);	
+		switch(questionAnswerPair[0]) {
+			case "cancer":
+				q="Cancer";
+				break
+	        case "cancer-breast-liver":
+	        	q="Have you ever had breast cancer, liver tumors or liver cancer?";
+	        	break
+	        case "cancer-endometrial-ovarian-cervical":
+	        	q="Have you ever had endometrial cancer, ovarian cancer, or cervical cancer?";
+	        	break
+	        case "anemia":
+	        	q="Anemia or blood-clotting problems";
+	        	break
+	        case "anemia-clotting-disorder":
+	        	q="Do you have a clotting disorder?";
+	        	break
+	        case "anemia-sickle-cell":
+	        	q="Do you have sickle cell anemia?";
+	        	break
+	        case "diabetes":
+	        	q="Diabetes";
+	        	break
+	        case "diabetes-kidneys-eyes-nerves":
+	        	q="Do you have problems with your kidneys, eyes or nerves from your diabetes?";
+	        	break
+	        case "diabetes-20-years":
+	        	q="Have you had diabetes for more than 20 years?";
+	        	break
+	        case "migraine":
+	        	q="Migraine headaches";
+	        	break
+	        case "migraine-aura":
+	        	q="When you have a migraine headache, do you see an aura? An aura means seeing spots or wavy lines before or during the migraine headache.";
+	        	break
+	        case "migraine-medicines":
+	        	q="Do you take any of these medicines for migraines? Topiramate, Topamax";
+	        	break
+	        case "seizures":
+	        	q="Seizures";
+	        	break
+	        case "tuberculosis":
+	        	q="Tuberculosis";
+	        	break
+	        case "heart":
+	        	q="Heart disease, high blood pressure, or stroke";
+	        	break
+	        case "kidney_gallbladder_liver":
+	        	q="Kidney, gallbladder or liver disease";
+	        	break
+	        case "hiv":
+	        	q="HIV";
+	        	break
+	        case "ectopic":
+	        	q="Molar or ectopic pregnancy";
+	        	break
+		}
+		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+	}
+}
+
 
 /* Mini helper function that, when given an answer property,
 returns an array with the question, and an answer 

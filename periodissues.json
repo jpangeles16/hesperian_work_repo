@@ -1,0 +1,195 @@
+{
+  "questions": [
+    {
+      "question": "qMostImportant",
+      "answers": {
+        "safe_with_breastfeeding-yes": 1,
+        "pregnant_after_stopping-yes": 2,
+        "few_side_effects-yes": 3,
+        "no_hormones-no": 4,
+        "effective_long_term-no": 5,
+        "not_interrupt_sex-no": 6,
+        "continue_periods-no": 7,
+        "fewer_periods-no": 8,
+        "decreases_symptoms_from_periods-no": 9
+      }
+    },
+    {
+      "question": "qRiskFactors",
+      "answers": {
+        "smoke-no": 1,
+        "bloodpressure-no": 2,
+        "over35-no": 3,
+        "other-risk-factors-no": 4
+      }
+    },
+    {
+      "question": "qPeriodProblems",
+      "answers": {
+        "period_bother-yes": 1,
+        "period_bother-irregular-yes": 2,
+        "period_bother-heavy-yes": 3,
+        "period_bother-long-yes": 4,
+        "period_bother-cramps-yes": 5,
+        "period_bother-breasts_tender-yes": 6,
+        "period_bother-depressed_anxious-yes": 7,
+        "period_bother-bloated-yes": 8,
+        "period_bother-headaches-yes": 9,
+        "period_bother-pms-yes": 10,
+        "period_bother-miss_work-yes": 11
+      }
+    },
+    {
+      "question": "qWhichHaveYouUsed",
+      "answers": {
+        "ocp-no": 1,
+        "ccap-no": 2,
+        "diaph-no": 3,
+        "sperm-no": 4,
+        "pop-no": 5,
+        "nuvaring-no": 6,
+        "depo-no": 7,
+        "nori-no": 8,
+        "cyclomess-no": 9,
+        "mcondom-no": 10,
+        "fcondom-no": 11,
+        "sponge-no": 12,
+        "paragard-no": 13,
+        "implanon-no": 14,
+        "withd-no": 15
+      }
+    },
+    {
+      "question": "qOtherMedications",
+      "answers": {
+        "stjohnswort-no": 1,
+        "antifungal-no": 2
+      }
+    },
+    {
+      "question": "qOtherHealthIssues",
+      "answers": {
+        "acne-no": 1,
+        "hair-no": 2,
+        "endometriosis-no": 3
+      }
+    },
+    {
+      "question": "qWhenHaveChildren",
+      "answers": {
+        "have-children-year": 1
+      }
+    },
+    {
+      "question": "qOtherQuestions",
+      "answers": {
+        "i-put-no": 1,
+        "healthworker-put-no": 2,
+        "partner-willing-no": 3,
+        "keep-secret-no": 4,
+        "breastfeeding-no": 5,
+        "sti-protect-no": 6
+      }
+    },
+    {
+      "question": "qMethodSpecific",
+      "answers": {
+        "birth_control_pills-no": 1,
+        "birth_control_injections-no": 2,
+        "contraceptive_ring-no": 3,
+        "iud-no": 4,
+        "contraceptive_implant-no": 5
+      }
+    },
+    {
+      "question": "results"
+    }
+  ],
+  "results": {
+    "green": [
+      {
+        "id": "mcondom",
+        "score": 2.8333333333333335
+      },
+      {
+        "id": "fam",
+        "score": 2.5575
+      },
+      {
+        "id": "withd",
+        "score": 2.4333333333333336
+      },
+      {
+        "id": "fcondom",
+        "score": 2.257142857142857
+      },
+      {
+        "id": "diaph",
+        "score": 1.7999999999999998
+      },
+      {
+        "id": "sperm",
+        "score": 1.775
+      },
+      {
+        "id": "sponge",
+        "score": 1.4571428571428573
+      },
+      {
+        "id": "ccap",
+        "score": 1.4571428571428573
+      },
+      {
+        "id": "ortho_evra",
+        "score": 0.6758461538461539
+      },
+      {
+        "id": "ocp",
+        "score": 0.6758461538461539
+      }
+    ],
+    "yellow": [],
+    "red": [
+      {
+        "id": "pop",
+        "score": 1.7692307692307694
+      },
+      {
+        "id": "mirena",
+        "score": 1.5089062500000001
+      },
+      {
+        "id": "vas",
+        "score": 1.4264285714285716
+      },
+      {
+        "id": "btl",
+        "score": 1.4214285714285715
+      },
+      {
+        "id": "implanon",
+        "score": 1.2427645502645503
+      },
+      {
+        "id": "nuvaring",
+        "score": 0.9966666666666666
+      },
+      {
+        "id": "cyclomess",
+        "score": 0.6841964285714285
+      },
+      {
+        "id": "nori",
+        "score": 0.5629464285714285
+      },
+      {
+        "id": "paragard",
+        "score": 0.4058181818181818
+      },
+      {
+        "id": "depo",
+        "score": 0.21651785714285712
+      }
+    ]
+  }
+}

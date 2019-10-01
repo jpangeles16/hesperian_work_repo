@@ -4,13 +4,13 @@ readable.
 
 #displayContentsContainer, 
  #displayRecommendations, 
- #displayContraceptiveIssuesContainer {
+ #displayContraceptiveIssuesContainer,
+ #displayhealthissuescontainer {
 	position: absolute;
 	width: 49%;
 	margin: 0px;
 	border: 4px solid gray;
 	border-radius: 5px;
-
 }
 
 #displayContentsContainer {
@@ -24,6 +24,10 @@ readable.
 #displayContraceptiveIssuesContainer {
 	right: 0%;
 	top: 520px;
+}
+
+#displayhealthissuescontainer {
+	top: 3050px;
 }
 
 p {
