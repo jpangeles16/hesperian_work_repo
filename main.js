@@ -13,9 +13,14 @@ TODO: create a class for the JSON file to help with this.
 @author John Angeles
 */
 
-
 // //Get the url that contains formation about what the user inputted.
 // var url = document.URL;
+
+// Upon clicking this button, we should go ahead and trigger the html stuff
+var submitButton = document.getElementById("submit-button");
+
+// The text area where we have your JSON file
+var textArea = document.getElementById("textarea");
 
 //Get the container from our HTML file that will display the results.
 var displayContainer = document.getElementById("displayContentsContainer");
@@ -30,15 +35,12 @@ var healthProblemsContainer = document.getElementById("displayhealthissuescontai
 /* Fourth step. A function that works in conjunction with displayContainer.
 Basically, it displays our results to our HTML file. */
 function renderHTML(question, answer) {
-
 	var answerClass;
-
 	if (answer == "NO") {
 		answerClass = "no";
 	} else {
 		answerClass = "yes";
 	}
-
 	var qDisplay = "<p class='" + answerClass + "'>Question: " + question + "</p>";
 	var answer = "<p class='" + answerClass + "'>You answered: " + answer + "</p>";
 	displayContainer.insertAdjacentHTML('beforeend', qDisplay);
@@ -77,36 +79,56 @@ function renderHTMLForContraceptiveProblems(question, answer) {
 	healthProblemsContainer.insertAdjacentHTML('beforeend', answer);
 }
 
-// Input is the input element from our HTML script.
-var input = document.getElementById("fileInput");
-const reader = new FileReader(); 
+// // Input is the input element from our HTML script.
+// var input = document.getElementById("fileInput");
+// const reader = new FileReader(); 
+
+// /* First step. When the input changes, we will end up calling this
+//  function that will ultimately call the onload function. */
+// input.addEventListener('change', function (e) {
+// 	// As soon as we read the text, we will call the following function.
+// 	reader.onload = function() {
+
+// 		// // Parse the url from the reader
+// 		var parsedFile = JSON.parse(reader.result);
+
+// 		// Fetch the questions.
+// 		var questionsList = parsedFile.questions;
+
+// 		// Fetch the results.
+// 		var results = parsedFile.results;
+
+// 		// Display the user's results.
+// 		displayQuestionsAndAnswers(questionsList);
+
+// 		// (Leads to fifth step) display the recommendations
+// 		displayRecommendations(results);
+// 	}
+// 	// Reads the input.
+// 	reader.readAsText(input.files[0]);
+// })
 
 /* First step. When the input changes, we will end up calling this
- function that will ultimately call the onload function. */
-input.addEventListener('change', function (e) {
-	// As soon as we read the text, we will call the following function.
-	reader.onload = function() {
+ function that will read the JSON file we've typed up. */
+submitButton.addEventListener('click', function (e) {
+	// First, we must flush out the contents of the div elements
+	emptyDivs();
 
-		// //First, ensure that the url is properly decoded
-		// url = decodeURL(url);
+	var text = textArea.value;
+	// Parse JSON file from the textarea.
+	var parsedFile = JSON.parse(text);
 
-		// // Parse the url from the reader
-		var parsedFile = JSON.parse(reader.result);
+	// Fetch the questions.
+	var questionsList = parsedFile.questions;
 
-		// Fetch the questions.
-		var questionsList = parsedFile.questions;
+	// Fetch the results.
+	var results = parsedFile.results;
 
-		// Fetch the results.
-		var results = parsedFile.results;
+	// Display the user's results.
+	displayQuestionsAndAnswers(questionsList);
 
-		// Display the user's results.
-		displayQuestionsAndAnswers(questionsList);
-
-		// (Leads to fifth step) display the recommendations
-		displayRecommendations(results);
-	}
-	// Reads the input.
-	reader.readAsText(input.files[0]);
+	// (Leads to fifth step) display the recommendations
+	displayRecommendations(results);
 })
 
 // /* First step. When the input changes, we will end up calling this
@@ -131,6 +153,17 @@ input.addEventListener('change', function (e) {
 // 	// (Leads to fifth step) display the recommendations
 // 	displayRecommendations(results);
 // }
+
+/* Empties all of the div elements, and also resets haveSeen */
+function emptyDivs() {
+	displayContainer.innerHTML = "";
+	contraceptiveProblemsContainer.innerHTML = "";
+	healthProblemsContainer.innerHTML = "";
+	recommendationsContainer.innerHTML = "";
+	for (var prop in haveSeen) {
+		haveSeen[prop] = false;
+	}
+}
 
 /* Assumes that our URL input is encoded. Not only does this function
 decode it, but it returns the JSON text that we can parse to get the answers from 
