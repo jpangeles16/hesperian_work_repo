@@ -13,8 +13,9 @@ TODO: create a class for the JSON file to help with this.
 @author John Angeles
 */
 
-//Get the url that contains formation about what the user inputted.
-var url = document.URL;
+
+// //Get the url that contains formation about what the user inputted.
+// var url = document.URL;
 
 //Get the container from our HTML file that will display the results.
 var displayContainer = document.getElementById("displayContentsContainer");

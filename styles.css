@@ -2,6 +2,10 @@
 readable.
 @author John Angeles*/
 
+* {
+	position: relative;
+}
+
 #displayContentsContainer, 
  #displayRecommendations, 
  #displayContraceptiveIssuesContainer,
@@ -23,11 +27,15 @@ readable.
 
 #displayContraceptiveIssuesContainer {
 	right: 0%;
-	top: 520px;
+	top: 600px;
 }
 
 #displayhealthissuescontainer {
 	top: 3050px;
+}
+
+#textarea {
+	width: 100%;
 }
 
 p {
