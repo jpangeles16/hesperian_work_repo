@@ -299,31 +299,26 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			displayContainer.insertAdjacentHTML('beforeend', "<p>FIFTH PAGE</p>");
 			processQOtherMedications(questionAndAnswerObject);
 			haveSeen.qOtherMedications = true;
-
 			return;
 		case "qOtherHealthIssues":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>SIXTH PAGE</p>");
 			processQOtherHealthIssues(questionAndAnswerObject);
 			haveSeen.qOtherHealthIssues = true;
-
 			return;
 		case "qWhenHaveChildren":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>SEVENTH PAGE</p>");
 			processQWhenHaveChildren(questionAndAnswerObject);
 			haveSeen.qWhenHaveChildren = true;
-
 			return;
 		case "qOtherQuestions":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>EIGHTH PAGE</p>");
 			processQOtherQuestions(questionAndAnswerObject);
 			haveSeen.qOtherQuestions = true;
-
 			return;
 		case "qMethodSpecific":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>NINTH PAGE</p>");
 			processQMethodSpecific(questionAndAnswerObject);
 			haveSeen.qMethodSpecific = true;
-
 			return;
 	}
 }
@@ -1391,7 +1386,18 @@ function processQOtherHealthIssues(questionObject) {
 }
 
 function processQWhenHaveChildren(questionObject) {
-	console.log("STILL NEED TO IMPLEMENT");
+	var answer = questionObject.answers;
+	var q;
+
+	if (answer == "have-children-year") {
+		q = "I want to have children within a year";
+	} else if (answer == "have-children-years") {
+		q = "I want to have children in a few years"
+	} else {
+		q = "I never want to have children";
+	}
+	renderHTML(q, "YES");
+
 }
 
 function processQOtherQuestions(questionObject) {

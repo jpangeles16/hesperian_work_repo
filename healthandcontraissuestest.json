@@ -1,0 +1,239 @@
+{
+  "questions": [
+    {
+      "question": "qMostImportant",
+      "answers": {
+        "safe_with_breastfeeding-yes": 1,
+        "pregnant_after_stopping-yes": 2,
+        "few_side_effects-yes": 3,
+        "no_hormones-no": 4,
+        "effective_long_term-no": 5,
+        "not_interrupt_sex-no": 6,
+        "continue_periods-no": 7,
+        "fewer_periods-no": 8,
+        "decreases_symptoms_from_periods-no": 9
+      }
+    },
+    {
+      "question": "qRiskFactors",
+      "answers": {
+        "smoke-yes": 1,
+        "bloodpressure-yes": 2,
+        "over35-no": 3,
+        "other-risk-factors-yes": 4
+      }
+    },
+    {
+      "question": "qSeriousHealthProblems",
+      "answers": {
+        "cancer-yes": 1,
+        "cancer-breast-liver-yes": 2,
+        "cancer-endometrial-ovarian-cervical-no": 3,
+        "anemia-no": 4,
+        "diabetes-no": 5,
+        "migraine-no": 6,
+        "seizures-no": 7,
+        "tuberculosis-no": 8,
+        "heart-no": 9,
+        "kidney_gallbladder_liver-no": 10,
+        "hiv-yes": 11,
+        "hiv-art-yes": 12,
+        "ectopic-no": 13,
+        "hiv-no-art": 100
+      }
+    },
+    {
+      "question": "qPeriodProblems",
+      "answers": {
+        "period_bother-yes": 1,
+        "period_bother-irregular-no": 2,
+        "period_bother-heavy-yes": 3,
+        "period_bother-long-no": 4,
+        "period_bother-cramps-no": 5,
+        "period_bother-breasts_tender-no": 6,
+        "period_bother-depressed_anxious-no": 7,
+        "period_bother-bloated-no": 8,
+        "period_bother-headaches-no": 9,
+        "period_bother-pms-no": 10,
+        "period_bother-miss_work-no": 11
+      }
+    },
+    {
+      "question": "qWhichHaveYouUsed",
+      "answers": {
+        "ocp-yes": 1,
+        "ocp-problems-yes": 2,
+        "ccap-no": 3,
+        "diaph-no": 4,
+        "sperm-no": 5,
+        "pop-no": 6,
+        "nuvaring-no": 7,
+        "depo-no": 8,
+        "nori-no": 9,
+        "cyclomess-no": 10,
+        "mcondom-no": 11,
+        "fcondom-no": 12,
+        "sponge-no": 13,
+        "paragard-no": 14,
+        "implanon-no": 15,
+        "withd-no": 16
+      }
+    },
+    {
+      "question": "qMethodProblems/ocp",
+      "answers": {
+        "bodyChanges-breast-tenderness-no": 1,
+        "bodyChanges-hair-loss-no": 2,
+        "bodyChanges-depression-no": 3,
+        "bodyChanges-nausea-vomiting-no": 4,
+        "bodyChanges-weight-gain-no": 5,
+        "bodyChanges-migraines-no": 6,
+        "bodyChanges-other-no": 7,
+        "using-getting-problems-no": 8,
+        "using-forgot-doses-no": 9,
+        "using-restart-after-period-no": 10,
+        "using-got-pregnant-yes": 11,
+        "using-other-no": 12,
+        "periods-prolonged-bleeding-no": 13,
+        "periods-heavy-bleeding-no": 14,
+        "periods-irregular-bleeding-no": 15,
+        "periods-absence-bleeding-yes": 16,
+        "periods-other-no": 17
+      }
+    },
+    {
+      "question": "qOtherMedications",
+      "answers": {
+        "stjohnswort-yes": 1,
+        "antifungal-no": 2
+      }
+    },
+    {
+      "question": "qOtherHealthIssues",
+      "answers": {
+        "acne-no": 1,
+        "hair-yes": 2,
+        "endometriosis-no": 3
+      }
+    },
+    {
+      "question": "qWhenHaveChildren",
+      "answers": {
+        "have-children-years": 1
+      }
+    },
+    {
+      "question": "qOtherQuestions",
+      "answers": {
+        "frequency-day": 1,
+        "i-put-yes": 2,
+        "healthworker-put-no": 3,
+        "partner-willing-no": 4,
+        "keep-secret-no": 5,
+        "breastfeeding-yes": 6,
+        "sti-protect-no": 7
+      }
+    },
+    {
+      "question": "qMethodSpecific",
+      "answers": {
+        "birth_control_pills-yes": 1,
+        "birth_control_injections-no": 2,
+        "contraceptive_ring-no": 3,
+        "iud-no": 4,
+        "contraceptive_implant-yes": 5
+      }
+    },
+    {
+      "question": "results"
+    }
+  ],
+  "results": {
+    "green": [
+      {
+        "id": "mcondom",
+        "score": 0.7083333333333334
+      }
+    ],
+    "yellow": [
+      {
+        "id": "fam",
+        "score": 0.3575
+      }
+    ],
+    "red": [
+      {
+        "id": "fcondom",
+        "score": 0.5642857142857143
+      },
+      {
+        "id": "withd",
+        "score": 0.48666666666666664
+      },
+      {
+        "id": "diaph",
+        "score": 0.48
+      },
+      {
+        "id": "sperm",
+        "score": 0.4733333333333333
+      },
+      {
+        "id": "mirena",
+        "score": 0.46828125
+      },
+      {
+        "id": "implanon",
+        "score": 0.4627314814814815
+      },
+      {
+        "id": "pop",
+        "score": 0.4246153846153847
+      },
+      {
+        "id": "sponge",
+        "score": 0.38857142857142857
+      },
+      {
+        "id": "ccap",
+        "score": 0.38857142857142857
+      },
+      {
+        "id": "vas",
+        "score": 0.2852857142857143
+      },
+      {
+        "id": "btl",
+        "score": 0.28428571428571425
+      },
+      {
+        "id": "ocp",
+        "score": 0.14861538461538465
+      },
+      {
+        "id": "cyclomess",
+        "score": 0.11258928571428571
+      },
+      {
+        "id": "nuvaring",
+        "score": 0.07666666666666665
+      },
+      {
+        "id": "ortho_evra",
+        "score": 0.0530769230769231
+      },
+      {
+        "id": "nori",
+        "score": 0.05196428571428572
+      },
+      {
+        "id": "paragard",
+        "score": 0.045090909090909105
+      },
+      {
+        "id": "depo",
+        "score": -0.05196428571428572
+      }
+    ]
+  }
+}
