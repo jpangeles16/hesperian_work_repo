@@ -64,7 +64,7 @@ function renderHTMLForContraceptiveProblems(question, answer) {
 }
 
 /* Fourth step. A function that works in conjunction with the health problems container. */
-function renderHTMLForContraceptiveProblems(question, answer) {
+function renderHTMLForHealthProblems(question, answer) {
 	var answerClass;
 
 	if (answer == "NO") {
@@ -390,7 +390,7 @@ var haveSeen = {
 };
 
 //===== Set of functions that display user response when user inputs issues with contraceptives =====//
-/* OCP means birth controll pills */
+/* OCP means birth control pills */
 function processQMethodProblemsOCP(questionAndAnswerObject) {
 	var answers = questionAndAnswerObject.answers;
 	// Variable to store question and answer pair.
@@ -1184,7 +1184,7 @@ function processQSeriousHealthProblems(questionAndAnswerObject) {
 	        	q="Molar or ectopic pregnancy";
 	        	break
 		}
-		renderHTMLForContraceptiveProblems(q, questionAnswerPair[1]);
+		renderHTMLForHealthProblems(q, questionAnswerPair[1]);
 	}
 }
 
@@ -1284,7 +1284,7 @@ function processQPeriodProblems(questionObject) {
 	var answers = questionObject.answers;
 	for (var prop in answers) {
 		var questionAnswerPair = getUserResponse(prop);
-		renderHTML("Question: When you are NOT using birth control, does your period bother you?", questionAnswerPair[1]);
+		renderHTML("When you are NOT using birth control, does your period bother you?", questionAnswerPair[1]);
 	}
 }
 
