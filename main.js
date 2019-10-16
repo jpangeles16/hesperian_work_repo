@@ -224,6 +224,7 @@ function processQuestionAndAnswerObject(questionAndAnswerObject) {
 			healthProblemsContainer.insertAdjacentHTML('beforeend', "<p>HEALTH PROBLEMS</p>");
 			processQSeriousHealthProblems(questionAndAnswerObject);
 			haveSeen.qSeriousHealthProblems = true;
+			return;
 		case "qPeriodProblems":
 			displayContainer.insertAdjacentHTML('beforeend', "<p>THIRD PAGE</p>");
 			processQPeriodProblems(questionAndAnswerObject);
@@ -1279,7 +1280,43 @@ function processQPeriodProblems(questionObject) {
 	var answers = questionObject.answers;
 	for (var prop in answers) {
 		var questionAnswerPair = getUserResponse(prop);
-		renderHTML("When you are NOT using birth control, does your period bother you?", questionAnswerPair[1]);
+
+		switch(questionAnswerPair[0]) {
+			case "period_bother":
+				q = "When you are NOT using birth control, does your period bother you?";
+				break;
+			case "period_bother-irregular":
+				q = "My periods are irregular and that concerns me";
+				break;
+			case "period_bother-heavy":
+				q = "My periods are very heavy and that bothers me";
+				break;
+			case "period_bother-long":
+				q = "My periods last longer than 7 days";
+				break;
+			case "period_bother-cramps":
+				q = "My periods are painful, I have bad cramps";
+				break;
+			case "period_bother-breasts_tender":
+				q = "My breasts get very tender";
+				break;
+			case "period_bother-depressed_anxious":
+				q = "I get depressed or anxious";
+				break;
+			case"period_bother-bloated":
+				q = "I get bloated or retain fluid";
+				break;
+			case "period_bother-headaches":
+				q = "I get bad headaches";
+				break;
+			case"period_bother-pms":
+				q = "I get serious PMS";
+				break;
+			case"period_bother-miss_work":
+				q = "My period makes me miss work or school";
+				break;
+		}
+		renderHTML(q, questionAnswerPair[1]);
 	}
 }
 
